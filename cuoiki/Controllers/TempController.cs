@@ -10,7 +10,7 @@ namespace cuoiki.Controllers
     public class TempController : Controller
     {
         // GET: Temp
-        Model2 db = new Model2();
+        Model1 db = new Model1();
         public ActionResult Index()
         {
             return View();
@@ -21,6 +21,15 @@ namespace cuoiki.Controllers
                 where t.hide==false
                 orderby t.order ascending
                 select t;
+            return PartialView(v.ToList());
+        }
+
+        public ActionResult getSlideShow()
+        {
+            var v = from t in db.slidesShow
+                    where t.hide == false
+                    orderby t.order ascending
+                    select t;
             return PartialView(v.ToList());
         }
     }

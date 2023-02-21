@@ -136,8 +136,9 @@
     </Compile>
     <Compile Include="Models\Food.cs" />
     <Compile Include="Models\MenuBar.cs" />
-    <Compile Include="Models\Model2.cs" />
+    <Compile Include="Models\Model1.cs" />
     <Compile Include="Models\ProductType.cs" />
+    <Compile Include="Models\slidesShow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -217,6 +218,7 @@
     <Content Include="Views\Shared\_MyLayout.cshtml" />
     <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\Temp\getMenu.cshtml" />
+    <Content Include="Views\Temp\getSlideShow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\files\" />

@@ -5,16 +5,17 @@ using System.Linq;
 
 namespace cuoiki.Models
 {
-    public partial class Model2 : DbContext
+    public partial class Model1 : DbContext
     {
-        public Model2()
-            : base("name=barbecue_db")
+        public Model1()
+            : base("name=barbecue_DB")
         {
         }
 
         public virtual DbSet<Food> Food { get; set; }
         public virtual DbSet<MenuBar> MenuBar { get; set; }
         public virtual DbSet<ProductType> ProductType { get; set; }
+        public virtual DbSet<slidesShow> slidesShow { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
