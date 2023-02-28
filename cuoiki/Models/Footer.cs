@@ -6,20 +6,27 @@ namespace cuoiki.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("SlidesShow")]
-    public partial class SlidesShow
+    [Table("Footer")]
+    public partial class Footer
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int idSlidesShow { get; set; }
+        public int idFooter { get; set; }
 
         [StringLength(100)]
-        public string title { get; set; }
+        public string name { get; set; }
 
-        [StringLength(300)]
-        public string description { get; set; }
+        [StringLength(1000)]
+        public string intro { get; set; }
 
-        public string link { get; set; }
+        [StringLength(1000)]
+        public string address { get; set; }
+
+        [StringLength(100)]
+        public string email { get; set; }
+
+        [StringLength(100)]
+        public string sdt { get; set; }
 
         [StringLength(100)]
         public string meta { get; set; }

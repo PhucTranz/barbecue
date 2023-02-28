@@ -6,16 +6,17 @@ namespace cuoiki.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("ProductType")]
-    public partial class ProductType
+    [Table("Banner")]
+    public partial class Banner
     {
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int id { get; set; }
+        public int idBanner { get; set; }
 
-        [StringLength(50)]
+        [StringLength(100)]
         public string name { get; set; }
 
-        [StringLength(50)]
+        [StringLength(100)]
         public string meta { get; set; }
 
         public bool? hide { get; set; }

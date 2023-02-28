@@ -10,7 +10,7 @@ namespace cuoiki.Controllers
     public class TempController : Controller
     {
         // GET: Temp
-        Model1 db = new Model1();
+        barbecue db = new barbecue();
         public ActionResult Index()
         {
             return View();
@@ -26,10 +26,10 @@ namespace cuoiki.Controllers
 
         public ActionResult getSlideShow()
         {
-            var v = from t in db.slidesShow
-                    where t.hide == false
-                    orderby t.order ascending
-                    select t;
+            var v = from t in db.SlidesShow
+                where t.hide == false
+                orderby t.order ascending
+                select t;
             return PartialView(v.ToList());
         }
     }

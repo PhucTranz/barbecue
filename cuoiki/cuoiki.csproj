@@ -134,11 +134,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\Banner.cs" />
+    <Compile Include="Models\barbecue.cs" />
+    <Compile Include="Models\Bill.cs" />
+    <Compile Include="Models\DetailBill.cs" />
     <Compile Include="Models\Food.cs" />
+    <Compile Include="Models\Footer.cs" />
     <Compile Include="Models\MenuBar.cs" />
-    <Compile Include="Models\Model1.cs" />
-    <Compile Include="Models\ProductType.cs" />
-    <Compile Include="Models\slidesShow.cs" />
+    <Compile Include="Models\SlidesShow.cs" />
+    <Compile Include="Models\Statuss.cs" />
+    <Compile Include="Models\Tablee.cs" />
+    <Compile Include="Models\TypeFood.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -150,44 +157,47 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\css\responsive.css" />
+    <Content Include="Content\css\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\css\style.css.map" />
-    <Content Include="Scripts\css\style.scss" />
-    <Content Include="Scripts\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Scripts\fonts\fontawesome-webfont.woff" />
-    <Content Include="Scripts\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\css\style.css.map" />
+    <Content Include="Content\css\style.scss" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Scripts\css\bootstrap.css" />
-    <Content Include="Scripts\css\font-awesome.min.css" />
-    <Content Include="Scripts\css\responsive.css" />
-    <Content Include="Scripts\css\style.css" />
-    <Content Include="Scripts\images\about-img-temp-1.png" />
-    <Content Include="Scripts\images\about-img-temp.png" />
-    <Content Include="Scripts\images\about-img.png" />
-    <Content Include="Scripts\images\barbecued.png" />
-    <Content Include="Scripts\images\bg.png" />
-    <Content Include="Scripts\images\client1.jpg" />
-    <Content Include="Scripts\images\client2.jpg" />
-    <Content Include="Scripts\images\f1.png" />
-    <Content Include="Scripts\images\f2.png" />
-    <Content Include="Scripts\images\f3.png" />
-    <Content Include="Scripts\images\f4.png" />
-    <Content Include="Scripts\images\f5.png" />
-    <Content Include="Scripts\images\f6.png" />
-    <Content Include="Scripts\images\f7.png" />
-    <Content Include="Scripts\images\f8.png" />
-    <Content Include="Scripts\images\f9.png" />
-    <Content Include="Scripts\images\favicon.png" />
-    <Content Include="Scripts\images\hero-bg.jpg" />
-    <Content Include="Scripts\images\o1.jpg" />
-    <Content Include="Scripts\images\o2.jpg" />
-    <Content Include="Scripts\images\obj1.jpg" />
-    <Content Include="Scripts\images\obj2.jpg" />
+    <Content Include="Scripts\js\bootstrap.js" />
+    <Content Include="Scripts\js\custom.js" />
+    <Content Include="Scripts\js\jquery-3.4.1.min.js" />
+    <Content Include="Uploads\images\about-img-temp-1.png" />
+    <Content Include="Uploads\images\about-img-temp.png" />
+    <Content Include="Uploads\images\about-img.png" />
+    <Content Include="Uploads\images\barbecued.png" />
+    <Content Include="Uploads\images\bg.png" />
+    <Content Include="Uploads\images\client1.jpg" />
+    <Content Include="Uploads\images\client2.jpg" />
+    <Content Include="Uploads\images\f1.png" />
+    <Content Include="Uploads\images\f2.png" />
+    <Content Include="Uploads\images\f3.png" />
+    <Content Include="Uploads\images\f4.png" />
+    <Content Include="Uploads\images\f5.png" />
+    <Content Include="Uploads\images\f6.png" />
+    <Content Include="Uploads\images\f7.png" />
+    <Content Include="Uploads\images\f8.png" />
+    <Content Include="Uploads\images\f9.png" />
+    <Content Include="Uploads\images\favicon.png" />
+    <Content Include="Uploads\images\hero-bg.jpg" />
+    <Content Include="Uploads\images\o1.jpg" />
+    <Content Include="Uploads\images\o2.jpg" />
+    <Content Include="Uploads\images\obj1.jpg" />
+    <Content Include="Uploads\images\obj2.jpg" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -197,9 +207,6 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\js\bootstrap.js" />
-    <Content Include="Scripts\js\custom.js" />
-    <Content Include="Scripts\js\jquery-3.4.1.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -222,7 +229,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\files\" />
-    <Folder Include="Uploads\images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

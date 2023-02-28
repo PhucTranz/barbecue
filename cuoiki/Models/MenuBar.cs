@@ -9,15 +9,16 @@ namespace cuoiki.Models
     [Table("MenuBar")]
     public partial class MenuBar
     {
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int id { get; set; }
+        public int idMenuBar { get; set; }
 
-        [StringLength(50)]
+        [StringLength(100)]
         public string name { get; set; }
 
         public string link { get; set; }
 
-        [StringLength(50)]
+        [StringLength(100)]
         public string meta { get; set; }
 
         public bool? hide { get; set; }
