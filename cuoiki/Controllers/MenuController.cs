@@ -7,31 +7,26 @@ using cuoiki.Models;
 
 namespace cuoiki.Controllers
 {
-    public class DefaultController : Controller
+    public class MenuController : Controller
     {
-        // GET: Default
+        // GET: Menu
         barbecue db = new barbecue();
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult getMenu()
+        public ActionResult getTypeFood()
         {
-            var v = from t in db.MenuBar
+            var v = from t in db.TypeFood
                     where t.hide == false
-                    orderby t.order ascending
                     select t;
             return PartialView(v.ToList());
         }
-
-        public ActionResult getSlideShow()
+        public ActionResult getFood()
         {
-            var v = from t in db.SlidesShow
-                    where t.hide == false
-                    orderby t.order ascending
-                    select t;
-            return PartialView(v.ToList());
+            //Loc lam di
+            return null;
         }
     }
 }

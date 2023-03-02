@@ -1,0 +1,6 @@
+﻿@model IEnumerable<cuoiki.Models.TypeFood>
+@foreach (var i in Model)
+{
+    <li data-filter=".@i.name">@i.name</li>
+}
+
