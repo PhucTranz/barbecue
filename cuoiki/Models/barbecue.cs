@@ -30,8 +30,8 @@ namespace cuoiki.Models
                 .HasOptional(e => e.DetailBill)
                 .WithRequired(e => e.Bill);
 
-            modelBuilder.Entity<TypeFood>()
-                .Property(e => e.name)
+            modelBuilder.Entity<Food>()
+                .Property(e => e.img)
                 .IsUnicode(false);
         }
     }

@@ -19,7 +19,6 @@ namespace cuoiki.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int idTypeFood { get; set; }
 
-        [StringLength(100)]
         public string name { get; set; }
 
         [StringLength(100)]

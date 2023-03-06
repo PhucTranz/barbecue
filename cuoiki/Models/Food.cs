@@ -35,6 +35,8 @@ namespace cuoiki.Models
 
         public bool? hide { get; set; }
 
+        public string img { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetailBill> DetailBill { get; set; }
 

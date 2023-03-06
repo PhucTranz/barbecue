@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<cuoiki.Models.MenuBar>
 @foreach (var i in Model)
 {
-    <li class="nav-item active">
-        <a class="nav-link" href="@i.link">@i.name</a>
+    <li class="nav-item">
+        <a class="nav-link" href="/@i.link">@i.name</a>
     </li>
 }
 
