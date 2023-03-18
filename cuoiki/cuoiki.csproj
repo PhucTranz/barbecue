@@ -142,6 +142,7 @@
     <Compile Include="Models\Banner.cs" />
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\DataCart.cs" />
     <Compile Include="Models\DetailBill.cs" />
     <Compile Include="Models\DetailCart.cs" />
     <Compile Include="Models\Food.cs" />
