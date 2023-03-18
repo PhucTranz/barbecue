@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<cuoiki.Models.Cart>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -43,88 +44,27 @@
             <div class="row w-100">
                 <div class="col-lg-12 col-md-12 col-12">
                     <h3 class="display-5 mb-2 text-center">Giỏ hàng</h3>
-                    <table id="shoppingCart" class="table table-condensed table-responsive">
+                    <table>
                         <thead>
                             <tr>
-                                <th style="width:60%">Món ăn</th>
-                                <th style="width:12%">Giá</th>
-                                <th style="width:10%">Số lượng</th>
-                                <th style="width:16%"></th>
+                                <th>TypeFood Name</th>
+                                <th>Food Name</th>
+                                <th>Price</th>
+                                <th>Total Price</th>
+                                <th>Quantity</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td data-th="Product">
-                                    <div class="row">
-                                        <div class="col-md-3 text-left">
-                                            <img src="https://goeco.link/lUkNx" alt="" class="img-fluid d-none d-md-block rounded mb-2 shadow ">
-                                        </div>
-                                        <div class="col-md-9 text-left mt-sm-2">
-                                            <h4>Súp nghêu wakame</h4>
-                                            <p class="font-weight-light">Brand &amp; Name</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td data-th="Price">120.000 VND</td>
-                                <td data-th="Quantity">
-                                    <input type="number" class="form-control form-control-lg text-center" value="1">
-                                </td>
-                                <td class="actions" data-th="">
-                                    <div class="text-right">
-                                        <button class="btn btn-white border-secondary bg-white btn-md mb-2">
-                                            Xoá
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td data-th="Product">
-                                    <div class="row">
-                                        <div class="col-md-3 text-left">
-                                            <img src="https://goeco.link/BzJTb" alt="" class="img-fluid d-none d-md-block rounded mb-2 shadow ">
-                                        </div>
-                                        <div class="col-md-9 text-left mt-sm-2">
-                                            <h4>Lẩu cay hải sản</h4>
-                                            <p class="font-weight-light">Brand &amp; Name</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td data-th="Price">250.000 VND</td>
-                                <td data-th="Quantity">
-                                    <input type="number" class="form-control form-control-lg text-center" value="1">
-                                </td>
-                                <td class="actions" data-th="">
-                                    <div class="text-right">
-                                        <button class="btn btn-white border-secondary bg-white btn-md mb-2">
-                                            Xoá
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td data-th="Product">
-                                    <div class="row">
-                                        <div class="col-md-3 text-left">
-                                            <img src="https://goeco.link/ySVSx" alt="" class="img-fluid d-none d-md-block rounded mb-2 shadow ">
-                                        </div>
-                                        <div class="col-md-9 text-left mt-sm-2">
-                                            <h4>Rượu Him Soju nho</h4>
-                                            <p class="font-weight-light">Brand &amp; Name</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td data-th="Price">56.000 VND</td>
-                                <td data-th="Quantity">
-                                    <input type="number" class="form-control form-control-lg text-center" value="1">
-                                </td>
-                                <td class="actions" data-th="">
-                                    <div class="text-right">
-                                        <button class="btn btn-white border-secondary bg-white btn-md mb-2">
-                                            Xoá
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
+                            @foreach (var item in ViewBag.FoodCartData)
+                            {
+                                <tr>
+                                    <td>@item.TypeFoodName</td>
+                                    <td>@item.FoodName</td>
+                                    <td>@item.Price</td>
+                                    <td>@item.TotalPrice</td>
+                                    <td>@item.Quantity</td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                     <div class="float-right text-right">
@@ -169,5 +109,4 @@
     <!-- End Google Map -->
 
 </body>
-
-</html>
+<html>

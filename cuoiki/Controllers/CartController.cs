@@ -24,7 +24,7 @@ namespace cuoiki.Controllers
 
 
             var result = query.ToList();
-            
+            ViewBag.FoodCartData = result;
 
             return View();
         }
