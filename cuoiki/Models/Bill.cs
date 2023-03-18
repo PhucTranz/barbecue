@@ -15,8 +15,6 @@ namespace cuoiki.Models
 
         public int? idAcc { get; set; }
 
-        public int? idTable { get; set; }
-
         public int? idStatus { get; set; }
 
         [StringLength(100)]
@@ -30,8 +28,6 @@ namespace cuoiki.Models
         public virtual Account Account { get; set; }
 
         public virtual Statuss Statuss { get; set; }
-
-        public virtual Tablee Tablee { get; set; }
 
         public virtual DetailBill DetailBill { get; set; }
     }

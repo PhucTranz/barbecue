@@ -23,34 +23,32 @@ namespace cuoiki.Controllers
                     select t;
             return PartialView(v.ToList());
         }
-        public ActionResult getFood()
+        public ActionResult getFood(int idTF, string metaTF)
         {
-            var v = from f in db.Food
+            var v = (from f in db.Food
                     join tf in db.TypeFood on f.idTypeFood equals tf.idTypeFood
-                    select new
-                    {
-                        idfood = f.idFood,
-                        fName = f.name,
-                        tfName = tf.name,
-                        des = f.description,
-                        img = f.img,
-                        fPrice = f.price
-                    };
-            
-            List<String[]> list = new List<String[]>();   
-            foreach (var i in v.ToList())
-            {
-                String[] array = new String[6];
-                array[0] = Convert.ToString(i.idfood);
-                array[1] = i.fName;
-                array[2] = i.tfName;
-                array[3] = i.des;
-                array[4] = i.img;
-                array[5] = i.fPrice;
-                list.Add(array);
-            }
-            ViewBag.Food = list;
-            return PartialView();
+                    where tf.meta == metaTF & f.hide == false
+                    select f).Take(3);
+            ViewBag.meta = metaTF;
+            return PartialView(v.ToList());
+        }
+
+        public ActionResult getAllFood(string meta)
+        {
+            var tf = (from t in db.TypeFood
+                      where t.meta == meta
+                      select t).Take(1);
+
+            var typeFood = tf.FirstOrDefault();
+
+            var f = from t in db.Food
+                    where t.idTypeFood == typeFood.idTypeFood
+                    select t;
+
+            ViewBag.tfName = typeFood.name;
+            ViewBag.meta = typeFood.meta;
+
+            return View(f.ToList());
         }
     }
 }

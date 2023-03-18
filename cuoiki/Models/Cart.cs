@@ -6,23 +6,28 @@ namespace cuoiki.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Tablee")]
-    public partial class Tablee
+    [Table("Cart")]
+    public partial class Cart
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tablee()
+        public Cart()
         {
-            Bill = new HashSet<Bill>();
+            DetailCart = new HashSet<DetailCart>();
         }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int idTable { get; set; }
+        public int idCart { get; set; }
 
-        [StringLength(100)]
-        public string name { get; set; }
+        public int? tongtien { get; set; }
+
+        public int? idAcc { get; set; }
+
+        public int? status { get; set; }
+
+        public virtual Account Account { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bill> Bill { get; set; }
+        public virtual ICollection<DetailCart> DetailCart { get; set; }
     }
 }

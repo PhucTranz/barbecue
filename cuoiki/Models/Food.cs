@@ -13,6 +13,7 @@ namespace cuoiki.Models
         public Food()
         {
             DetailBill = new HashSet<DetailBill>();
+            DetailCart = new HashSet<DetailCart>();
         }
 
         [Key]
@@ -39,6 +40,9 @@ namespace cuoiki.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetailBill> DetailBill { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DetailCart> DetailCart { get; set; }
 
         public virtual TypeFood TypeFood { get; set; }
     }

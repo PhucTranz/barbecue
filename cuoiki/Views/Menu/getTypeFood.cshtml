@@ -1,6 +1,17 @@
 ﻿@model IEnumerable<cuoiki.Models.TypeFood>
 @foreach (var i in Model)
 {
-    <li data-filter=".@i.name">@i.name</li>
+    <h2>@i.name</h2>
+    
+    <div class="row grid">
+          @Html.Action("getFood", "Menu", new {idTF = i.idTypeFood, metaTF = @i.meta})
+    </div>
+
+    <div class="btn-box">
+        <a href="thuc_don/@i.meta">
+            View More
+        </a>
+    </div>
+    <hr />
 }
 

@@ -11,22 +11,9 @@
             </h2>
         </div>
 
-        <ul class="filters_menu">
-            <li class="active" data-filter="*">All</li>
-            @{ Html.RenderAction("getTypeFood", "Menu");}
-        </ul>
+        @{ Html.RenderAction("getTypeFood", "Menu");}
 
-        <div class="filters-content">
-            <div class="row grid">
-                @{ Html.RenderAction("getFood", "Menu");}
-              
-            </div>
-        </div>
-        <div class="btn-box">
-            <a href="">
-                View More
-            </a>
-        </div>
+
     </div>
 </section>
 
