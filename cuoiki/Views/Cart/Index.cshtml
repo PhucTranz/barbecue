@@ -44,35 +44,12 @@
             <div class="row w-100">
                 <div class="col-lg-12 col-md-12 col-12">
                     <h3 class="display-5 mb-2 text-center">Giỏ hàng</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>TypeFood Name</th>
-                                <th>Food Name</th>
-                                <th>Price</th>
-                                <th>Total Price</th>
-                                <th>Quantity</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in ViewBag.FoodCartData)
-                            {
-                                <tr>
-                                    <td>@item.TypeFoodName</td>
-                                    <td>@item.FoodName</td>
-                                    <td>@item.Price</td>
-                                    <td>@item.TotalPrice</td>
-                                    <td>@item.Quantity</td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                    <div class="float-right text-right">
-                        <h4>Tổng cộng</h4>
-                        <h1>426.000 VND</h1>
-                    </div>
+
+  
+                     
                 </div>
             </div>
+            @{ Html.RenderAction("getCart", "Cart");}
             <div class="row mt-4 d-flex align-items-center">
                 <div class="col-sm-6 order-md-2 text-right">
                     <a href="catalog.html" class="btn btn-primary mb-4 btn-lg pl-5 pr-5">Gọi món</a>

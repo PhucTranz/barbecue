@@ -16,20 +16,35 @@ namespace cuoiki.Controllers
         public ActionResult Index()
         {
 
-            var query = from f in db.Food
-                         join tf in db.TypeFood on f.idTypeFood equals tf.idTypeFood
-                         join dc in db.DetailCart on f.idFood equals dc.idFood
-                         join c in db.Cart on dc.idCart equals c.idCart
-                         select new { TypeFoodName = tf.name , FoodName = f.name, Price = f.price, TotalPrice =c.tongtien, Quantity= dc.soluong };
-
-
-            var result = query.ToList();
-            ViewBag.FoodCartData = result;
-
             return View();
         }
+        public ActionResult getCart()
+        {
+            var query = from f in db.Food
+                        join tf in db.TypeFood on f.idTypeFood equals tf.idTypeFood
+                        join dc in db.DetailCart on f.idFood equals dc.idFood
+                        join c in db.Cart on dc.idCart equals c.idCart
+                        select new { tfmeta = tf.meta, FoodName = f.name, Price = f.price, TotalPrice = c.tongtien, Quantity = dc.soluong, img = f.img };
 
-        
+            String p = "";
+            List<String[]> list = new List<String[]>();
+            foreach (var i in query.ToList())
+            {
+                String[] array = new String[6];
+                array[0] = i.tfmeta;
+                array[1] = i.FoodName;
+                array[2] = i.Price;
+                array[3] = Convert.ToString(i.TotalPrice);
+                p = array[3];
+                array[4] = Convert.ToString(i.Quantity);
+                array[5] = Convert.ToString(i.img);
+                list.Add(array);
+            }
+            ViewBag.m = p;
+            ViewBag.list = list;
+            return PartialView();
+        }
+
     }
 
 }

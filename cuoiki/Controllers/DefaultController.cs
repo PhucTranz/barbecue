@@ -25,6 +25,7 @@ namespace cuoiki.Controllers
             return PartialView(v.ToList());
         }
 
+
         public ActionResult getSlideShow()
         {
             var v = from t in db.SlidesShow
