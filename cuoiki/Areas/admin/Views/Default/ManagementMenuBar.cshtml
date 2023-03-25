@@ -24,7 +24,7 @@
                 <div class="panel-body">
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover">
-                            <thread>
+                            <thead>
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
@@ -32,7 +32,7 @@
                                     <th>Meta</th>
                                     <th>Date</th>
                                 </tr>
-                            </thread>
+                            </thead>
                             <tbody>
                                 @foreach (var i in ViewBag.list)
                                 {
@@ -77,49 +77,35 @@
     <!-- Bootstrap 4 -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-
     <script>
-        // sắp xếp bảng
-        $('th').click(function () {
-            var table = $(this).parents('table').eq(0)
-            var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
-            this.asc = !this.asc
-            if (!this.asc) { rows = rows.reverse() }
-            for (var i = 0; i < rows.length; i++) { table.append(rows[i]) }
-        // sắp xếp bảng
-        function comparer(index) {
-            return function (a, b) {
-                var valA = getCellValue(a, index), valB = getCellValue(b, index)
-                return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.toString().localeCompare(valB)
-            }
-        }
-        function getCellValue(row, index) { return $(row).children('td').eq(index).text() }
-
-        // phân trang
-        $(function () {
-            $('table').each(function () {
-                var currentPage = 0;
-                var numPerPage = 5;
-                var $table = $(this);
-                $table.bind('repaginate', function () {
-                    $table.find('tbody tr').hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
+        $(document).ready(function () {
+            // Tìm kiếm
+            $('#search-form').submit(function (event) {
+                event.preventDefault();
+                var query = $('#search-input').val();
+                $('tbody tr').each(function () {
+                    if ($(this).text().indexOf(query) !== -1) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
                 });
-                $table.trigger('repaginate');
-                var numRows = $table.find('tbody tr').length;
-                var numPages = Math.ceil(numRows / numPerPage);
-                var $pager = $('<ul class="pagination"></ul>');
-                for (var page = 0; page < numPages; page++) {
-                    $('<li><a href="#"></a></li>').text(page + 1).bind('click', {
-                        newPage: page
-                    }, function (event) {
-                        currentPage = event.data['newPage'];
-                        $table.trigger('repaginate');
-                        $(this).addClass('active').siblings().removeClass('active');
-                    }).appendTo($pager);
-                }
-                $pager.insertBefore($table).find('li:first').addClass('active');
+            });
+
+            // Phân trang
+            var rowsPerPage = 10;
+            var totalPages = Math.ceil($('tbody tr').length / rowsPerPage);
+            for (var i = 1; i <= totalPages; i++) {
+                $('.pagination').append('<li class="page-item"><a class="page-link" href="#">' + i + '</a></li>');
+            }
+            $('.pagination li:first-child').addClass('active');
+            $('.pagination li').click(function () {
+                var pageNum = $(this).find('a').text();
+                var startRow = (pageNum - 1) * rowsPerPage;
+                var endRow = startRow + rowsPerPage - 1;
+                $('tbody tr').css('display', 'none').slice(startRow, endRow + 1).fadeIn(200);
+                $('.pagination li').removeClass('active');
+                $(this).addClass('active');
             });
         });
-
     </script>
-
