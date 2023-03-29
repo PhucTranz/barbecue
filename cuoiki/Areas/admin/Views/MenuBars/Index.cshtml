@@ -1,0 +1,87 @@
+﻿@model IEnumerable<cuoiki.Models.MenuBar>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/_MyLayout.cshtml";
+}
+@section _Header{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+    <style>
+        th {
+            color: black !important;
+            font-weight:bold !important;
+        }
+    </style>
+}
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table id="example" class="table table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                STT
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.name).ToString().ToUpper()
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hide).ToString().ToUpper()
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.order).ToString().ToUpper()
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.datebegin).ToString().ToUpper()
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{var num = 1;}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.Raw(num++)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @if (item.hide.Equals(true))
+                    {
+                        <input type="checkbox" checked disabled />
+                    }
+                    else
+                    {
+                        <input type="checkbox" disabled />
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.order)
+                </td>
+                <td>
+                    @Convert.ToDateTime(item.datebegin).ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.idMenuBar }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.idMenuBar }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.idMenuBar })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

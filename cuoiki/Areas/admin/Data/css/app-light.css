@@ -7620,7 +7620,7 @@ select {
   vertical-align: middle !important; }
 
 .table thead th {
-  font-weight: 400; }
+  font-weight: 600; }
 
 .table tbody tr th {
   font-weight: 400; }
@@ -8114,8 +8114,10 @@ svg.navbar-brand-img {
 /* table */
 .table {
   color: #6c757d; }
-  .table thead th {
-    color: #ced4da; }
+
+.table th {
+    color: #000 !important;
+ }
   .table tbody tr th {
     color: #001a4e; }
   .table tr.collapse {

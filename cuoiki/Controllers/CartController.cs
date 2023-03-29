@@ -24,7 +24,7 @@ namespace cuoiki.Controllers
                         join tf in db.TypeFood on f.idTypeFood equals tf.idTypeFood
                         join dc in db.DetailCart on f.idFood equals dc.idFood
                         join c in db.Cart on dc.idCart equals c.idCart
-                        select new { tfmeta = tf.meta, FoodName = f.name, Price = f.price, TotalPrice = c.tongtien, Quantity = dc.soluong, img = f.img };
+                        select new { tfmeta = tf.meta, FoodName = f.name, Price = f.price, TotalPrice = c.tongtien, Quantity = dc.soluong, img = f.img};
 
             String p = "";
             List<String[]> list = new List<String[]>();
@@ -44,7 +44,6 @@ namespace cuoiki.Controllers
             ViewBag.list = list;
             return PartialView();
         }
-
     }
 
 }

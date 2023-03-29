@@ -44,12 +44,9 @@
             <div class="row w-100">
                 <div class="col-lg-12 col-md-12 col-12">
                     <h3 class="display-5 mb-2 text-center">Giỏ hàng</h3>
-
-  
-                     
+                    @{ Html.RenderAction("getCart", "Cart");}
                 </div>
             </div>
-            @{ Html.RenderAction("getCart", "Cart");}
             <div class="row mt-4 d-flex align-items-center">
                 <div class="col-sm-6 order-md-2 text-right">
                     <a href="catalog.html" class="btn btn-primary mb-4 btn-lg pl-5 pr-5">Gọi món</a>
