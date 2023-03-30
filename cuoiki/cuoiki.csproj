@@ -133,6 +133,8 @@
     <Compile Include="Areas\admin\Controllers\MenuBarsController.cs" />
     <Compile Include="Areas\admin\Controllers\SlidesShowsController.cs" />
     <Compile Include="Areas\admin\Controllers\TypeFoodsController.cs" />
+    <Compile Include="Areas\kitchen\Controllers\DefaultController.cs" />
+    <Compile Include="Areas\kitchen\kitchenAreaRegistration.cs" />
     <Compile Include="Controllers\BookTableController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
@@ -141,7 +143,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Banner.cs" />
     <Compile Include="Models\Bill.cs" />
@@ -217,6 +218,13 @@
     <Content Include="Areas\admin\Data\js\tinycolor-min.js" />
     <Content Include="Areas\admin\Data\js\topojson.min.js" />
     <Content Include="Areas\admin\Data\js\uppy.min.js" />
+    <Content Include="Areas\kitchen\Data\css\bootstrap.css" />
+    <Content Include="Areas\kitchen\Data\css\font-awesome.min.css" />
+    <Content Include="Areas\kitchen\Data\css\responsive.css" />
+    <Content Include="Areas\kitchen\Data\css\style.css" />
+    <Content Include="Areas\kitchen\Data\js\bootstrap.js" />
+    <Content Include="Areas\kitchen\Data\js\custom.js" />
+    <Content Include="Areas\kitchen\Data\js\jquery-3.4.1.min.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -262,6 +270,13 @@
     <Content Include="Areas\admin\Views\Foods\Details.cshtml" />
     <Content Include="Areas\admin\Views\Foods\Edit.cshtml" />
     <Content Include="Areas\admin\Views\Foods\Index.cshtml" />
+    <Content Include="Areas\kitchen\Views\web.config" />
+    <Content Include="Areas\kitchen\Views\Default\Index.cshtml" />
+    <Content Include="Areas\kitchen\Data\css\style.css.map" />
+    <Content Include="Areas\kitchen\Data\css\style.scss" />
+    <Content Include="Areas\kitchen\Data\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Areas\kitchen\Data\fonts\fontawesome-webfont.woff" />
+    <Content Include="Areas\kitchen\Data\fonts\fontawesome-webfont.woff2" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\js\bootstrap.js" />
     <Content Include="Scripts\js\custom.js" />
@@ -484,6 +499,7 @@
     <Content Include="Views\Cart\getCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\kitchen\Views\Shared\" />
     <Folder Include="Uploads\files\" />
   </ItemGroup>
   <ItemGroup>
