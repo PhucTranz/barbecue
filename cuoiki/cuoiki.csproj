@@ -129,8 +129,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
     <Compile Include="Areas\admin\Controllers\DefaultController.cs" />
+    <Compile Include="Areas\admin\Controllers\FoodsController.cs" />
     <Compile Include="Areas\admin\Controllers\MenuBarsController.cs" />
     <Compile Include="Areas\admin\Controllers\SlidesShowsController.cs" />
+    <Compile Include="Areas\admin\Controllers\TypeFoodsController.cs" />
     <Compile Include="Controllers\BookTableController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
@@ -250,6 +252,16 @@
     <Content Include="Areas\admin\Views\SlidesShows\Details.cshtml" />
     <Content Include="Areas\admin\Views\SlidesShows\Edit.cshtml" />
     <Content Include="Areas\admin\Views\SlidesShows\Index.cshtml" />
+    <Content Include="Areas\admin\Views\TypeFoods\Create.cshtml" />
+    <Content Include="Areas\admin\Views\TypeFoods\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\TypeFoods\Details.cshtml" />
+    <Content Include="Areas\admin\Views\TypeFoods\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\TypeFoods\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Foods\Create.cshtml" />
+    <Content Include="Areas\admin\Views\Foods\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\Foods\Details.cshtml" />
+    <Content Include="Areas\admin\Views\Foods\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\Foods\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\js\bootstrap.js" />
     <Content Include="Scripts\js\custom.js" />
