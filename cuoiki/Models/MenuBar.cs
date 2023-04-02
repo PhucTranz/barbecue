@@ -10,7 +10,6 @@ namespace cuoiki.Models
     public partial class MenuBar
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int idMenuBar { get; set; }
 
         [StringLength(100)]

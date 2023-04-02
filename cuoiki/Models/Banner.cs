@@ -10,7 +10,6 @@ namespace cuoiki.Models
     public partial class Banner
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int idBanner { get; set; }
 
         [StringLength(100)]

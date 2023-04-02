@@ -10,7 +10,6 @@ namespace cuoiki.Models
     public partial class Footer
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int idFooter { get; set; }
 
         [StringLength(100)]

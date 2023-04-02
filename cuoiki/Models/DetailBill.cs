@@ -10,7 +10,6 @@ namespace cuoiki.Models
     public partial class DetailBill
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int idBill { get; set; }
 
         public int? idFood { get; set; }

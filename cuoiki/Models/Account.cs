@@ -17,7 +17,6 @@ namespace cuoiki.Models
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int idAcc { get; set; }
 
         [StringLength(100)]

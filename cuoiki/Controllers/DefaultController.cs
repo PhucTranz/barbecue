@@ -13,6 +13,8 @@ namespace cuoiki.Controllers
         barbecue db = new barbecue();
         public ActionResult Index()
         {
+            if (Session["User"].Equals(""))
+                return RedirectToAction("Index","Login");
             return View();
         }
 

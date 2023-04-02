@@ -10,7 +10,6 @@ namespace cuoiki.Models
     public partial class SlidesShow
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int idSlidesShow { get; set; }
 
         [StringLength(100)]

@@ -16,7 +16,6 @@ namespace cuoiki.Models
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int idStatus { get; set; }
 
         [Column(TypeName = "smalldatetime")]

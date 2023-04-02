@@ -12,6 +12,8 @@ namespace cuoiki.Areas.admin.Controllers
         // GET: admin/Default
         public ActionResult Index()
         {
+            if (!Session["User"].Equals("admin"))
+                return RedirectToAction("Index", "Login", new { area = "" });
             return View();
         }
     }

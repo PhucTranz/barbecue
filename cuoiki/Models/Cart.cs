@@ -16,7 +16,6 @@ namespace cuoiki.Models
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int idCart { get; set; }
 
         public int? tongtien { get; set; }

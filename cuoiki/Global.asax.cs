@@ -17,5 +17,10 @@ namespace cuoiki
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+        protected void Session_Start()
+        {
+            Session["User"] = "";
+            Session["id"] = "";
+        }
     }
 }
