@@ -18,7 +18,7 @@
                         <h6>
                             @i.price
                         </h6>
-                        <a href="" data-toggle="modal" data-target="#exampleModal">
+                        <a href="" id="@i.idFood" onclick="formSL(id)" data-toggle="modal" data-target="#exampleModal">
                             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                             <g>
                             <g>
@@ -82,10 +82,11 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <input id="soluong" type="number" style="width:100% !important"/>
+                                        <input id="idfood" type="number" hidden/>
+                                        <input id="soluong" type="number" style="width:100% !important" />
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" id="add" class="btn btn-primary">Thêm vào giỏ</button>
+                                        <button type="button" onclick="addToCart()" class="btn btn-primary">Thêm vào giỏ</button>
                                     </div>
                                 </div>
                             </div>
@@ -97,7 +98,29 @@
     </div>
 
 }
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
 <script>
-    $('#add').click()
+    function formSL(id) {
+        $('#idfood').val(id)
+    }
+    function addToCart() {
+        let idfood = $('#idfood').val()
+        let soluong = $('#soluong').val()
+        $.ajax({
+            url: '/Cart/addToCart',
+            type: 'post',
+            data: {
+                idfood: idfood,
+                soluong: soluong
+            },
+            success: function (data) {
+                if (data.code == 1) {
+                    alert(data.msg)
+                } else {
+                    alert(data.msg)
+                }
+            }
+        });
+    }
 </script>
 

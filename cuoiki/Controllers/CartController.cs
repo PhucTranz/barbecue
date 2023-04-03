@@ -21,10 +21,11 @@ namespace cuoiki.Controllers
         }
         public ActionResult getCart()
         {
+            int idAcc = Int32.Parse(Session["id"].ToString());
             var query = from f in db.Food
                         join tf in db.TypeFood on f.idTypeFood equals tf.idTypeFood
                         join dc in db.DetailCart on f.idFood equals dc.idFood
-                        join c in db.Cart on dc.idCart equals c.idCart
+                        join c in db.Cart on dc.idCart equals c.idCart where c.idAcc == idAcc && c.status == 0
                         select new { tfmeta = tf.meta, FoodName = f.name, Price = f.price, TotalPrice = c.tongtien, Quantity = dc.soluong, img = f.img};
 
             String p = "";
@@ -51,11 +52,7 @@ namespace cuoiki.Controllers
         {
             try
             {
-                var foods = from food in db.Food
-                        where food.idFood == idFood
-                        select food;
-                Food f = foods.FirstOrDefault();
-
+                Food f = db.Food.Find(idFood);
                 int idAcc = Int32.Parse(Session["id"].ToString());
                 var v = from t in db.Cart
                         where t.idAcc == idAcc && t.status == 0
@@ -66,8 +63,10 @@ namespace cuoiki.Controllers
                     c = new Cart();
                     c.idAcc = idAcc;
                     c.status = 0;
-                    c.tongtien = c.tongtien + f.price * soluong;
+
+                    c.tongtien = f.price * soluong;
                     db.Cart.Add(c);
+                    db.SaveChanges();
                     v = from t in db.Cart
                             where t.idAcc == idAcc && t.status == 0
                             select t;
@@ -83,6 +82,7 @@ namespace cuoiki.Controllers
                 dc.idFood = idFood;
                 dc.soluong = soluong;
                 db.DetailCart.Add(dc);
+                db.SaveChanges();
                 return Json(new {code = 1, msg = "Thêm thành công"}, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
