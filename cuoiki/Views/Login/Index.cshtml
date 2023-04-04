@@ -13,7 +13,7 @@
     <title>Đăng nhập</title>
 </head>
 <body>
-    @using (Html.BeginForm("login","Login", FormMethod.Post))
+    @using (Html.BeginForm("Index","Login", FormMethod.Post))
     {
         <div class="container">
             <div class="row justify-content-center">
@@ -22,7 +22,7 @@
                     <form class=" w-100 mb-5 mx-auto px-3 pt-3 " method="post" action="login">
                         <div class="form-group">
                             <label for="username">Tài khoản</label>
-                            <input id="username" type="text" class="form-control" placeholder="Nhập tài khoản" name="username" >
+                            <input id="username" type="text" class="form-control" placeholder="Nhập tài khoản" name="username">
                         </div>
                         <div class="form-group mt-4">
                             <label for="password">Mật khẩu</label>
@@ -32,7 +32,9 @@
                         <div class="form-group mt-1">
                             <button class="btn btn-primary px-5 mt-4">Đăng nhập</button>
                         </div>
-                        <div class="form-group mt-2">
+
+                        <p class="mt-1" style="color:red !important">@ViewBag.error</p>
+                        <div class="form-group mt-1">
                             <p>Chưa có tài khoản? <a>Đăng kí</a></p>
                         </div>
                     </form>
@@ -40,6 +42,5 @@
             </div>
         </div>
     }
-<h1>@ViewBag.error</h1>
 </body>
 </html>

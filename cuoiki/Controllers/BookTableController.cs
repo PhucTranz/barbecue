@@ -11,6 +11,7 @@ namespace cuoiki.Controllers
         // GET: BookTable
         public ActionResult Index()
         {
+            ViewBag.page = "dat_ban";
             return View();
         }
     }

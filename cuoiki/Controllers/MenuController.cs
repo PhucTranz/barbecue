@@ -13,6 +13,7 @@ namespace cuoiki.Controllers
         barbecue db = new barbecue();
         public ActionResult Index()
         {
+            ViewBag.page = "thuc_don";
             return View();
         }
 

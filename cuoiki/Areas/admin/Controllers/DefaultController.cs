@@ -7,13 +7,11 @@ using System.Web.Mvc;
 
 namespace cuoiki.Areas.admin.Controllers
 {
-    public class DefaultController : Controller
+    public class DefaultController : SecurityController
     {
         // GET: admin/Default
         public ActionResult Index()
         {
-            if (!Session["User"].Equals("admin"))
-                return RedirectToAction("Index", "Login", new { area = "" });
             return View();
         }
     }

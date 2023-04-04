@@ -7,14 +7,13 @@ using cuoiki.Models;
 
 namespace cuoiki.Controllers
 {
-    public class DefaultController : Controller
+    public class DefaultController : SecurityController
     {
         // GET: Default
         barbecue db = new barbecue();
         public ActionResult Index()
         {
-            if (Session["User"].Equals(""))
-                return RedirectToAction("Index","Login");
+            ViewBag.page = "trang_chu";
             return View();
         }
 

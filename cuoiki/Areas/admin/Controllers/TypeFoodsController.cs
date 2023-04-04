@@ -10,7 +10,7 @@ using cuoiki.Models;
 
 namespace cuoiki.Areas.admin.Controllers
 {
-    public class TypeFoodsController : Controller
+    public class TypeFoodsController : SecurityController
     {
         private barbecue db = new barbecue();
 

@@ -12,7 +12,6 @@ namespace cuoiki.Controllers
     public class LoginController : Controller
     {
         barbecue db = new barbecue();
-
         // GET: Login
         public ActionResult Index()
         {
@@ -32,7 +31,7 @@ namespace cuoiki.Controllers
         }
 
         [HttpPost]
-        public ActionResult login(FormCollection field)
+        public ActionResult Index(FormCollection field)
         {   
             string username = field["username"];
             string password = field["password"];
@@ -51,7 +50,7 @@ namespace cuoiki.Controllers
                 return RedirectToAction("Index", "Default");
             }
             ViewBag.error = "Sai tài khoản hoặc mật khẩu";
-            return RedirectToAction("Index");
+            return View();
         }
 
         public ActionResult logout()

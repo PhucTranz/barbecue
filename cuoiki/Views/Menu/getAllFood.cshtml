@@ -30,7 +30,7 @@
                                     <h6>
                                         @i.price
                                     </h6>
-                                    <a href="">
+                                    <a href="" id="@i.idFood" onclick="formSL(id)" data-toggle="modal" data-target="#exampleModal">
                                         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                                         <g>
                                         <g>
@@ -84,6 +84,32 @@
                         </g>
                       </svg>
                                     </a>
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel" style="color:black !important">Nhập số lượng</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <input id="idfood" type="number" hidden />
+                                                    <input id="soluong" type="number" style="width:100% !important" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" onclick="addToCart()" class="btn btn-primary" data-dismiss="modal" aria-label="Close">Thêm vào giỏ</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="modal2 noti" style="position: fixed; top:0; left: 0; right: 0; bottom: 0;
+                                                        justify-content: center; align-items: center; display: none;">
+                                        <div class="alert alert-primary" role="alert">This is a success alert—check it out!</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -93,4 +119,34 @@
         </div>
     </div>
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+<script>
+    function formSL(id) {
+        $('#idfood').val(id)
+    }
+    function addToCart() {
+        let idfood = $('#idfood').val()
+        let soluong = $('#soluong').val()
+        $.ajax({
+            url: '/Cart/addToCart',
+            type: 'post',
+            data: {
+                idfood: idfood,
+                soluong: soluong
+            },
+            success: function (data) {
+                if (data.code == 1) {
+                    $('.alert').html('Thêm thành công')
+                    $('.noti').css("display", "flex")
+                    $('.noti').fadeIn("slow").delay(3000).fadeOut("slow")
+                } else {
+                    $('.alert').html('Đã có món này trong giỏ hàng')
+                    $('.noti').css("display", "flex")
+                    $('.noti').fadeIn("slow").delay(3000).fadeOut("slow")
+                }
+            }
+        });
+    }
+</script>
 

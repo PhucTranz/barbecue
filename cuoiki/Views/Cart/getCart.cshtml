@@ -23,11 +23,11 @@
                 </td>
                 <td data-th="Price">@i[2] đ</td>
                 <td data-th="Quantity">
-                    <input type="number" class="form-control form-control-lg text-center" value="@i[4]">
+                    <input type="number" class="form-control form-control-lg text-center quantity" value="@i[4]" id="@i[6]">
                 </td>
                 <td class="actions" data-th="">
                     <div class="text-right">
-                        <button class="btn btn-white border-secondary bg-white btn-md mb-2">
+                        <button onclick="del(id)" id="@i[6]" class="btn btn-white border-secondary bg-white btn-md mb-2">
                             Xoá
                         </button>
                     </div>
@@ -38,5 +38,44 @@
 </table>
 <div class="float-right text-right">
     <h4>Tổng cộng</h4>
-    <h1>@ViewBag.m</h1>
+    <h1>@ViewBag.m đ</h1>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+<script>
+    function del(id){
+        $.ajax({
+            url: '/Cart/del',
+            type: 'post',
+            data: {
+                idfood: id
+            },
+            success: function (data) {
+                if (data.code == 1) {
+                    location.reload()
+                } else {
+                    alert(data.msg)
+                }
+            }
+        });
+    }
+    $(".quantity").change(function () {
+        let soluong = $(this).val();
+        let id = $(this).attr('id');
+        $.ajax({
+            url: '/Cart/updateQuantity',
+            type: 'post',
+            data: {
+                idfood: id,
+                soluong: soluong
+            },
+            success: function (data) {
+                if (data.code == 1) {
+                    location.reload()
+                } else {
+                    alert(data.msg)
+                }
+            }
+        });
+    });
+</script>

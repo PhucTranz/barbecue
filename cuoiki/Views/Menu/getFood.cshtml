@@ -73,6 +73,7 @@
                       </svg>
                         </a>
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -82,22 +83,30 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <input id="idfood" type="number" hidden/>
+                                        <input id="idfood" type="number" hidden />
                                         <input id="soluong" type="number" style="width:100% !important" />
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" onclick="addToCart()" class="btn btn-primary">Thêm vào giỏ</button>
+                                        <button type="button" onclick="addToCart()" class="btn btn-primary" data-dismiss="modal" aria-label="Close">Thêm vào giỏ</button>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
+
+                        <div class="modal2 noti" style="position: fixed; top:0; left: 0; right: 0; bottom: 0;
+                                                        justify-content: center; align-items: center; display: none;">
+                            <div class="alert alert-primary" role="alert">This is a success alert—check it out!</div>
+                        </div>
+
                     </div>
-                    </div>
+                </div>
             </div>
         </div>
     </div>
-
 }
+
+
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
 <script>
     function formSL(id) {
@@ -115,9 +124,13 @@
             },
             success: function (data) {
                 if (data.code == 1) {
-                    alert(data.msg)
+                    $('.alert').html('Thêm thành công')
+                    $('.noti').css("display","flex")    
+                    $('.noti').fadeIn("slow").delay(3000).fadeOut("slow")
                 } else {
-                    alert(data.msg)
+                    $('.alert').html('Đã có món này trong giỏ hàng')
+                    $('.noti').css("display", "flex")
+                    $('.noti').fadeIn("slow").delay(3000).fadeOut("slow")
                 }
             }
         });
