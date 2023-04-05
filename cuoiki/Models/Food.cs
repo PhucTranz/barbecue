@@ -24,9 +24,9 @@ namespace cuoiki.Models
         [StringLength(100)]
         public string name { get; set; }
 
-        public int price { get; set; }
+        public int? price { get; set; }
 
-        [StringLength(1000)]
+        [StringLength(255)]
         public string description { get; set; }
 
         [StringLength(100)]
@@ -35,6 +35,8 @@ namespace cuoiki.Models
         public bool? hide { get; set; }
 
         public string img { get; set; }
+
+        public DateTime? datebegin { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetailBill> DetailBill { get; set; }

@@ -10,12 +10,16 @@ namespace cuoiki.Models
     public partial class DetailBill
     {
         [Key]
+        [Column(Order = 0)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int idBill { get; set; }
 
-        public int? idFood { get; set; }
+        [Key]
+        [Column(Order = 1)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int idFood { get; set; }
 
-        [StringLength(100)]
-        public string quanlity { get; set; }
+        public int quanlity { get; set; }
 
         public virtual Bill Bill { get; set; }
 

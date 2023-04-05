@@ -53,6 +53,7 @@ namespace cuoiki.Areas.admin.Controllers
             if (ModelState.IsValid)
             {
                 account.password = GetMD5(account.password);
+                account.datebegin = DateTime.Now;
                 db.Account.Add(account);
                 db.SaveChanges();
                 return RedirectToAction("Index");

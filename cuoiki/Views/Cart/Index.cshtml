@@ -35,6 +35,20 @@
     <!-- responsive style -->
     <link href="~/Areas/kitchen/Data/css/responsive.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+    <script>
+        function redirect() {
+            window.location.href = "/";
+        }
+        function order() {
+            $.ajax({
+                url: '/Cart/order',
+                type: 'post',
+                success: function (data) {
+                    $('#message').html(data.msg);
+                }
+            });
+        }
+    </script>
 </head>
 
 <body class="sub_page">
@@ -58,17 +72,6 @@
                     </button>
                 </nav>
             </div>
-            <script>
-                function redirect() {
-                    window.location.href = "/";
-                }
-                function order() {
-                    $.ajax({
-                        url: '/Cart/order',
-                        type: 'post'
-                    });
-                }
-            </script>
         </header>
         <!-- end header section -->
     </div>
@@ -99,7 +102,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Gọi món thành công, vui lòng đợi bếp làm món</p>
+                    <p id="message">Gọi món thành công, vui lòng đợi bếp làm món</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" onclick="redirect()" class="btn btn-primary" data-dismiss="modal" aria-label="Close">Đóng</button>

@@ -96,7 +96,7 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <input id="idfood" type="number" hidden />
-                                                    <input id="soluong" type="number" style="width:100% !important" />
+                                                    <input id="soluong" type="number" style="width:100% !important" min="0"/>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" onclick="addToCart()" class="btn btn-primary" data-dismiss="modal" aria-label="Close">Thêm vào giỏ</button>
@@ -143,7 +143,7 @@
                 } else {
                     $('.alert').html('Đã có món này trong giỏ hàng')
                     $('.noti').css("display", "flex")
-                    $('.noti').fadeIn("slow").delay(3000).fadeOut("slow")
+                    $('.noti').fadeIn("slow").delay(1800).fadeOut("slow")
                 }
             }
         });

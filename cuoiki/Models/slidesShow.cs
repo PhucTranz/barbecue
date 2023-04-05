@@ -27,7 +27,6 @@ namespace cuoiki.Models
 
         public int? order { get; set; }
 
-        [Column(TypeName = "smalldatetime")]
         public DateTime? datebegin { get; set; }
     }
 }

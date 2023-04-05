@@ -9,25 +9,28 @@ namespace cuoiki.Models
     [Table("Bill")]
     public partial class Bill
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Bill()
+        {
+            DetailBill = new HashSet<DetailBill>();
+        }
+
         [Key]
         public int idBill { get; set; }
 
         public int? idAcc { get; set; }
 
-        public int? idStatus { get; set; }
+        public int? total { get; set; }
 
-        [StringLength(100)]
-        public string total { get; set; }
+        public DateTime? timeBegin { get; set; }
 
-        [StringLength(100)]
-        public string meta { get; set; }
+        public DateTime? timeFinish { get; set; }
 
-        public bool? hide { get; set; }
+        public bool? status { get; set; }
 
         public virtual Account Account { get; set; }
 
-        public virtual Statuss Statuss { get; set; }
-
-        public virtual DetailBill DetailBill { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DetailBill> DetailBill { get; set; }
     }
 }

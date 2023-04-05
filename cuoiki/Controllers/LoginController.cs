@@ -47,6 +47,8 @@ namespace cuoiki.Controllers
                 Session["id"] = accounts.idAcc;
                 if (accounts.username.Equals("admin"))
                     return RedirectToAction("Index", "Default", new {area = "admin"});
+                if (accounts.username.Equals("kitchen"))
+                    return RedirectToAction("Index", "Default", new { area = "kitchen" });
                 return RedirectToAction("Index", "Default");
             }
             ViewBag.error = "Sai tài khoản hoặc mật khẩu";
@@ -56,6 +58,7 @@ namespace cuoiki.Controllers
         public ActionResult logout()
         {
             Session["User"] = "";
+            Session["id"] = "";
             return RedirectToAction("Index");
         }
     }

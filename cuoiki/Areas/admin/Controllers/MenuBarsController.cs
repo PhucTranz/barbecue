@@ -50,6 +50,7 @@ namespace cuoiki.Areas.admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                menuBar.datebegin= DateTime.Now;
                 db.MenuBar.Add(menuBar);
                 db.SaveChanges();
                 return RedirectToAction("Index");

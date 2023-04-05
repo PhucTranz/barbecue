@@ -222,6 +222,7 @@
     <Compile Include="Areas\admin\Controllers\SlidesShowsController.cs" />
     <Compile Include="Areas\admin\Controllers\TypeFoodsController.cs" />
     <Compile Include="Areas\kitchen\Controllers\DefaultController.cs" />
+    <Compile Include="Areas\kitchen\Controllers\SecurityController.cs" />
     <Compile Include="Areas\kitchen\kitchenAreaRegistration.cs" />
     <Compile Include="Controllers\BookTableController.cs" />
     <Compile Include="Controllers\CartController.cs" />
@@ -244,7 +245,6 @@
     <Compile Include="Models\MenuBar.cs" />
     <Compile Include="Models\barbecue.cs" />
     <Compile Include="Models\SlidesShow.cs" />
-    <Compile Include="Models\Statuss.cs" />
     <Compile Include="Models\TypeFood.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -360,7 +360,6 @@
     <Content Include="Areas\admin\Views\Foods\Edit.cshtml" />
     <Content Include="Areas\admin\Views\Foods\Index.cshtml" />
     <Content Include="Areas\kitchen\Views\web.config" />
-    <Content Include="Areas\kitchen\Views\Default\Index.cshtml" />
     <Content Include="Areas\kitchen\Data\css\style.css.map" />
     <Content Include="Areas\kitchen\Data\css\style.scss" />
     <Content Include="Areas\kitchen\Data\fonts\fontawesome-webfont.ttf" />
@@ -371,6 +370,9 @@
     <Content Include="Areas\admin\Views\Accounts\Details.cshtml" />
     <Content Include="Areas\admin\Views\Accounts\Edit.cshtml" />
     <Content Include="Areas\admin\Views\Accounts\Index.cshtml" />
+    <Content Include="Areas\kitchen\Views\Shared\_MyLayout.cshtml" />
+    <Content Include="Areas\kitchen\Views\Default\Index.cshtml" />
+    <Content Include="Areas\kitchen\Views\Default\detailOrder.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\js\bootstrap.js" />
     <Content Include="Scripts\js\custom.js" />
@@ -595,7 +597,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\admin\Views\Security\" />
-    <Folder Include="Areas\kitchen\Views\Shared\" />
+    <Folder Include="Areas\kitchen\Views\Security\" />
     <Folder Include="Uploads\files\" />
     <Folder Include="Views\Security\" />
   </ItemGroup>

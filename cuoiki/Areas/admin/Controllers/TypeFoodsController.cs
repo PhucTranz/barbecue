@@ -50,6 +50,7 @@ namespace cuoiki.Areas.admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                typeFood.datebegin = DateTime.Now;
                 db.TypeFood.Add(typeFood);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -25,6 +25,8 @@ namespace cuoiki.Models
 
         public bool? hide { get; set; }
 
+        public DateTime? datebegin { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Food> Food { get; set; }
     }

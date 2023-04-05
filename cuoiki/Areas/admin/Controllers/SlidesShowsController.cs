@@ -50,6 +50,7 @@ namespace cuoiki.Areas.admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                slidesShow.datebegin = DateTime.Now;
                 db.SlidesShow.Add(slidesShow);
                 db.SaveChanges();
                 return RedirectToAction("Index");

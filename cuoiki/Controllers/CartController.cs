@@ -51,6 +51,8 @@ namespace cuoiki.Controllers
         [HttpPost]
         public JsonResult addToCart(int idFood, int soluong)
         {
+            if(soluong < 1)
+                return Json(new { code = 0, msg = "Thêm thất bại"}, JsonRequestBehavior.AllowGet);
             try
             {
                 Food f = db.Food.Find(idFood);
@@ -89,7 +91,7 @@ namespace cuoiki.Controllers
             }
             catch (Exception e)
             {
-                return Json(new { code = 0, msg = "Thêm thất bại: "+e.Message }, JsonRequestBehavior.AllowGet);
+                return Json(new { code = 0, msg = "Đã có trong giỏ hàng"}, JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -125,6 +127,8 @@ namespace cuoiki.Controllers
         [HttpPost]
         public JsonResult updateQuantity(int idFood, int soluong)
         {
+            if (soluong < 1)
+                return Json(new { code = 0, msg = "Thất bại: " }, JsonRequestBehavior.AllowGet);
             try
             {
                 Food f = db.Food.Find(idFood);
@@ -144,11 +148,11 @@ namespace cuoiki.Controllers
                 dc.soluong = soluong;
                 db.DetailCart.AddOrUpdate(dc);
                 db.SaveChanges();
-                return Json(new { code = 1, msg = "thành công" }, JsonRequestBehavior.AllowGet);
+                return Json(new { code = 1, msg = "Thành công" }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
             {
-                return Json(new { code = 0, msg = "thất bại: " + e.Message }, JsonRequestBehavior.AllowGet);
+                return Json(new { code = 0, msg = "Thất bại: " + e.Message }, JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -163,12 +167,39 @@ namespace cuoiki.Controllers
                 Cart c = v.FirstOrDefault();
                 c.status = 1;
                 db.Cart.AddOrUpdate(c);
+
+                Bill bill = new Bill();
+                bill.idAcc = idAcc;
+                bill.total = c.tongtien;
+                bill.timeBegin = DateTime.Now;
+                bill.status = false;
+                db.Bill.Add(bill);
                 db.SaveChanges();
-                return Json(new { code = 1, msg = "thành công" }, JsonRequestBehavior.AllowGet);
+
+                var b = from t in db.Bill
+                         where t.idAcc == idAcc && t.status == false
+                         select t;
+                bill = b.FirstOrDefault();
+
+                var listDC = from t in db.DetailCart
+                        where t.idCart == c.idCart
+                        select t;
+                
+                foreach(var i in listDC.ToList())
+                {
+                    DetailBill detailBill = new DetailBill();
+                    detailBill.idBill = bill.idBill;
+                    detailBill.idFood = i.idFood;
+                    detailBill.quanlity = (int) i.soluong;
+                    db.DetailBill.Add(detailBill);
+                    db.SaveChanges();
+                }
+                db.SaveChanges();
+                return Json(new { code = 1, msg = "Gọi món thành công, vui lòng đợi bếp làm món" }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
             {
-                return Json(new { code = 0, msg = "thất bại: " + e.Message }, JsonRequestBehavior.AllowGet);
+                return Json(new { code = 0, msg = "Thất bại: " + e.Message }, JsonRequestBehavior.AllowGet);
             }
         }
     }

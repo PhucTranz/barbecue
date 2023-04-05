@@ -8,7 +8,7 @@ namespace cuoiki.Models
     public partial class barbecue : DbContext
     {
         public barbecue()
-            : base("name=barbecue")
+            : base("name=Model1")
         {
         }
 
@@ -22,14 +22,18 @@ namespace cuoiki.Models
         public virtual DbSet<Footer> Footer { get; set; }
         public virtual DbSet<MenuBar> MenuBar { get; set; }
         public virtual DbSet<SlidesShow> SlidesShow { get; set; }
-        public virtual DbSet<Statuss> Statuss { get; set; }
         public virtual DbSet<TypeFood> TypeFood { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Banner>()
+                .Property(e => e.meta)
+                .IsUnicode(false);
+
             modelBuilder.Entity<Bill>()
-                .HasOptional(e => e.DetailBill)
-                .WithRequired(e => e.Bill);
+                .HasMany(e => e.DetailBill)
+                .WithRequired(e => e.Bill)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Cart>()
                 .HasMany(e => e.DetailCart)
@@ -37,9 +41,42 @@ namespace cuoiki.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Food>()
+                .Property(e => e.meta)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Food>()
+                .HasMany(e => e.DetailBill)
+                .WithRequired(e => e.Food)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Food>()
                 .HasMany(e => e.DetailCart)
                 .WithRequired(e => e.Food)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Footer>()
+                .Property(e => e.email)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Footer>()
+                .Property(e => e.sdt)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Footer>()
+                .Property(e => e.meta)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MenuBar>()
+                .Property(e => e.meta)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<SlidesShow>()
+                .Property(e => e.meta)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TypeFood>()
+                .Property(e => e.meta)
+                .IsUnicode(false);
         }
     }
 }

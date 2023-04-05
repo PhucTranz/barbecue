@@ -1,0 +1,72 @@
+﻿@model IEnumerable<cuoiki.Models.DetailBill>
+
+@{
+    Layout = "~/Areas/kitchen/Views/Shared/_MyLayout.cshtml";
+}
+
+<table class="table table-condensed table-responsive">
+    <thead>
+        <tr>
+            <th style="width:25%">STT</th>
+            <th style="width:25%">Hình ảnh</th>
+            <th style="width:30%">Tên món ăn</th>
+            <th style="width:100%">Số lượng</th>
+            <th style="width:100%">Giá</th>
+        </tr>
+    </thead>
+    @{var num = 1;}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.Raw(num++)
+            </td>
+            <td>
+                <img src="~/Uploads/images/@item.Food.TypeFood.meta/@item.Food.img" class="img-fluid d-none d-md-block rounded mb-2 shadow ">
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Food.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quanlity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Food.price)
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="container">
+    <div class="row mt-4 d-flex align-items-center">
+        <div class="col-sm-12 order-md-2 text-center">
+            <a onclick="finish(id)" class="btn btn-primary mb-4 btn-lg pl-5 pr-5">Hoàn thành</a>
+        </div>
+    </div>
+</div>
+<style>
+    img {
+        width: 150px;
+        height: 150px;
+    }
+</style>
+<script>
+    function finish(id) {
+        $.ajax({
+            url: '/Kitchen/Default/finish',
+            type: 'post',
+            data: {
+                id: @ViewBag.idBill
+            },
+            success: function (data) {
+                if (data.code == 1) {
+                    window.location.href = "/Kitchen/Default";
+                } else {
+                    alert(data.msg)
+                }
+            }
+        });
+    }
+</script>
+
+
