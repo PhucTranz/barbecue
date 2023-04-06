@@ -19,7 +19,7 @@ namespace cuoiki.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int idFood { get; set; }
 
-        public int quanlity { get; set; }
+        public int? quanlity { get; set; }
 
         public virtual Bill Bill { get; set; }
 

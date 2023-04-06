@@ -8,7 +8,7 @@ namespace cuoiki.Models
     public partial class barbecue : DbContext
     {
         public barbecue()
-            : base("name=Model1")
+            : base("name=barbecue")
         {
         }
 
@@ -31,12 +31,12 @@ namespace cuoiki.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Bill>()
-                .HasMany(e => e.DetailBill)
+                .HasMany(e => e.DetailBills)
                 .WithRequired(e => e.Bill)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Cart>()
-                .HasMany(e => e.DetailCart)
+                .HasMany(e => e.DetailCarts)
                 .WithRequired(e => e.Cart)
                 .WillCascadeOnDelete(false);
 
@@ -45,12 +45,12 @@ namespace cuoiki.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Food>()
-                .HasMany(e => e.DetailBill)
+                .HasMany(e => e.DetailBills)
                 .WithRequired(e => e.Food)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Food>()
-                .HasMany(e => e.DetailCart)
+                .HasMany(e => e.DetailCarts)
                 .WithRequired(e => e.Food)
                 .WillCascadeOnDelete(false);
 

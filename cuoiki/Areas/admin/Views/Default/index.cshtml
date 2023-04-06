@@ -4,5 +4,112 @@
     Layout = "~/Areas/admin/Views/Shared/_MyLayout.cshtml";
 }
 
-<h2>Welcome to admin</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Areas/admin/Data/js/app.css" type="text/css">
+</head>
+<body>
+    <div class="row">
+        <div class="col-12 col-lg-6 col-xl-3">
+            <div class="widget widget-tile">
+                <div class="chart sparkline" id="spark1"></div>
+                <div class="data-info">
+                    <div class="desc">Bill</div>
+                    <div class="value">
+                        <span class="indicator indicator-equal mdi mdi-chevron-right"></span><span class="number"
+                                                                                                   data-toggle="counter" data-end="113" data-suffix="Bill">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6 col-xl-3">
+            <div class="widget widget-tile">
+                <div class="chart sparkline" id="spark2"></div>
+                <div class="data-info">
+                    <div class="desc">Monthly Sales</div>
+                    <div class="value">
+                        <span class="indicator indicator-positive mdi mdi-chevron-up"></span><span class="number"
+                                                                                                   data-toggle="counter" data-end="192" data-suffix="%">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6 col-xl-3">
+            <div class="widget widget-tile">
+                <div class="chart sparkline" id="spark3"></div>
+                <div class="data-info">
+                    <div class="desc">Total Revenue</div>
+                    <div class="value">
+                        <span class="indicator indicator-positive mdi mdi-chevron-up"></span><span class="number"
+                                                                                                   data-toggle="counter" data-end="53120" data-suffix="$">120</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6 col-xl-3">
+            <div class="widget widget-tile">
+                <div class="chart sparkline" id="spark4"></div>
+                <div class="data-info">
+                    <div class="desc">Rating</div>
+                    <div class="value">
+                        <span class="indicator indicator-negative mdi mdi-chevron-down"></span><span class="number"
+                                                                                                     data-toggle="counter" data-end="1132" data-suffix="Lượt">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="row">
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-12">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <script>var ctx = document.getElementById('myChart').getContext('2d');
+      var myChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+              labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6'],
+              datasets: [{
+                  label: 'Doanh thu bán hàng',
+                  data: [5000000, 7500000, 10000000, 8500000, 9500000, 11000000],
+                  backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                  borderColor: 'rgba(54, 162, 235, 1)',
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero: true
+                      }
+                  }]
+              },
+              responsive: true
+          }
+      });</script>
+    </div>
+
+    <script src="~/Areas/admin/Data/js/jquery.min.js" type="text/javascript"></script>
+    <script src="~/Areas/admin/Data/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script src="~/Areas/admin/Data/js/app.js" type="text/javascript"></script>
+    <script src="~/Areas/admin/Data/js/jquery.sparkline.min.js" type="text/javascript"></script>
+    <script src="~/Areas/admin/Data/js/countUp.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">$(document).ready(function () {
+        //-initialize the javascript
+        App.init();
+        App.dashboard();
+
+      });</script>
+</body>
+
+</html>

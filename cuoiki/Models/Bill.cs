@@ -12,7 +12,7 @@ namespace cuoiki.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Bill()
         {
-            DetailBill = new HashSet<DetailBill>();
+            DetailBills = new HashSet<DetailBill>();
         }
 
         [Key]
@@ -31,6 +31,6 @@ namespace cuoiki.Models
         public virtual Account Account { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DetailBill> DetailBill { get; set; }
+        public virtual ICollection<DetailBill> DetailBills { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace cuoiki.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Cart()
         {
-            DetailCart = new HashSet<DetailCart>();
+            DetailCarts = new HashSet<DetailCart>();
         }
 
         [Key]
@@ -27,6 +27,6 @@ namespace cuoiki.Models
         public virtual Account Account { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DetailCart> DetailCart { get; set; }
+        public virtual ICollection<DetailCart> DetailCarts { get; set; }
     }
 }
