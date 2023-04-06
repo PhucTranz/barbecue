@@ -258,6 +258,7 @@
     <Content Include="Areas\admin\Data\css\app-light.css" />
     <Content Include="Areas\admin\Data\css\app-rtl.css" />
     <Content Include="Areas\admin\Data\css\bootstrap-datepicker.css" />
+    <Content Include="Areas\admin\Data\css\btn.css" />
     <Content Include="Areas\admin\Data\css\dataTables.bootstrap4.css" />
     <Content Include="Areas\admin\Data\css\daterangepicker.css" />
     <Content Include="Areas\admin\Data\css\dropzone.css" />
@@ -304,6 +305,7 @@
     <Content Include="Areas\admin\Data\js\quill.min.js" />
     <Content Include="Areas\admin\Data\js\select2.min.js" />
     <Content Include="Areas\admin\Data\js\simplebar.min.js" />
+    <Content Include="Areas\admin\Data\js\table.js" />
     <Content Include="Areas\admin\Data\js\tinycolor-min.js" />
     <Content Include="Areas\admin\Data\js\topojson.min.js" />
     <Content Include="Areas\admin\Data\js\uppy.min.js" />
