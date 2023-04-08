@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -15,12 +16,16 @@ namespace cuoiki.Areas.admin.Controllers
         private barbecue db = new barbecue();
 
         // GET: admin/Foods
-        public ActionResult Index()
+        public ActionResult Index(int? id = null)
         {
-            var food = db.Food.Include(f => f.TypeFood);
-            return View(food.ToList());
+            getTypeFood(id);
+            return View();
         }
 
+        public void getTypeFood(int? id = null)
+        {
+            ViewBag.typeFood = new SelectList(db.TypeFood.Where(x => x.hide == false), "idTypeFood", "name", id);
+        }
         // GET: admin/Foods/Details/5
         public ActionResult Details(int? id)
         {
@@ -43,15 +48,39 @@ namespace cuoiki.Areas.admin.Controllers
             return View();
         }
 
+        public ActionResult getFood(int? id)
+        {
+            if(id == null)
+            {
+                var foods = db.Food.Include(f => f.TypeFood);
+                return PartialView(foods.ToList());
+            }
+            var food = db.Food.Where(x => x.idTypeFood == id && x.hide == false);
+            return PartialView(food.ToList());
+        }
         // POST: admin/Foods/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idFood,idTypeFood,name,price,description,meta,hide,img")] Food food)
+        public ActionResult Create([Bind(Include = "idFood,idTypeFood,name,price,description,meta,hide,img")] Food food, HttpPostedFileBase fileImage)
         {
             if (ModelState.IsValid)
             {
+                if (fileImage != null)
+                {
+                    TypeFood tf = db.TypeFood.Find(food.idTypeFood);
+                    var path = "";
+                    var filename = "";
+                    filename = DateTime.Now.ToString("dd-MM-yy-hh-mm-ss-") + fileImage.FileName;
+                    path = Path.Combine(Server.MapPath("~/Uploads/images/"+tf.meta), filename);
+                    fileImage.SaveAs(path);
+                    food.img = filename; //Lưu ý
+                }
+                else
+                {
+                    food.img = "logo.png";
+                }
                 food.datebegin = DateTime.Now;
                 db.Food.Add(food);
                 db.SaveChanges();
