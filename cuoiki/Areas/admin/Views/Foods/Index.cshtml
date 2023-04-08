@@ -8,6 +8,7 @@
 @section _Header{
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="~/Areas/admin/Data/css/btn.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
@@ -16,6 +17,9 @@
         $(document).ready(function () {
             $('#example').DataTable();
         });
+        function add() {
+            window.location.href="@Url.Action("Create","Foods")"
+        }
     </script>
     <style>
         th {
@@ -29,10 +33,11 @@
         }
     </style>
 }
-<h2>Thức ăn</h2>
-<p>
-    @Html.ActionLink("Thêm mới", "Create")
-</p>
+<div id="a">
+    <h2>MenuBar</h2>
+    <button class="button" onclick="add()">Thêm mới</button>
+</div>
+<hr />
 <table id="example" class="table table-striped" style="width:100%">
     <thead>
         <tr>

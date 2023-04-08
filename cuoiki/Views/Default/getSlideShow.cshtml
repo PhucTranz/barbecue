@@ -1,53 +1,69 @@
 ﻿@model IEnumerable<cuoiki.Models.SlidesShow>
-@foreach (var i in Model)
-{
-    if (@i.order == 1)
-    {
-        <div class="carousel-item active">
-            <div class="container ">
-                <div class="row">
-                    <div class="col-md-7 col-lg-6 ">
-                        <div class="detail-box">
-                            <h1>
-                                @i.title
-                            </h1>
-                            <p>
-                                @i.description
-                            </p>
-                            <div class="btn-box">
-                                <a href="@i.link" class="btn1">
-                                    Xem chi tiết
-                                </a>
+<section class="slider_section ">
+    <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            @foreach (var i in Model)
+            {
+                if (@i.order == 1)
+                {
+                    <div class="carousel-item active">
+                        <div class="container ">
+                            <div class="row">
+                                <div class="col-md-7 col-lg-6 ">
+                                    <div class="detail-box">
+                                        <h1>
+                                            @i.title
+                                        </h1>
+                                        <p>
+                                            @i.description
+                                        </p>
+                                        <div class="btn-box">
+                                            <a href="@i.link" class="btn1">
+                                                Xem chi tiết
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    }
-    else
-    {
-        <div class="carousel-item">
-            <div class="container ">
-                <div class="row">
-                    <div class="col-md-7 col-lg-6 ">
-                        <div class="detail-box">
-                            <h1>
-                                @i.title
-                            </h1>
-                            <p>
-                                @i.description
-                            </p>
-                            <div class="btn-box">
-                                <a href="@i.link" class="btn1">
-                                    Order Now
-                                </a>
+                }
+                else
+                {
+                    <div class="carousel-item">
+                        <div class="container ">
+                            <div class="row">
+                                <div class="col-md-7 col-lg-6 ">
+                                    <div class="detail-box">
+                                        <h1>
+                                            @i.title
+                                        </h1>
+                                        <p>
+                                            @i.description
+                                        </p>
+                                        <div class="btn-box">
+                                            <a href="@i.link" class="btn1">
+                                                Order Now
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    }
+                }
 
-}
+            }
+        </div>
+        <div class="container">
+            <ol class="carousel-indicators">
+                <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
+                @for(var i = 1; i < ViewBag.sl; i++)
+                 {
+                    <li data-target="#customCarousel1" data-slide-to="@i"></li>
+                 }
+            </ol>
+        </div>
+    </div>
+</section>
+

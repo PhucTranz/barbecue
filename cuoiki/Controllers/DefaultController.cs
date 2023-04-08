@@ -26,13 +26,13 @@ namespace cuoiki.Controllers
             return PartialView(v.ToList());
         }
 
-
         public ActionResult getSlideShow()
         {
             var v = from t in db.SlidesShow
                     where t.hide == false
                     orderby t.order ascending
                     select t;
+            ViewBag.sl = v.ToList().Count();
             return PartialView(v.ToList());
         }
     }
