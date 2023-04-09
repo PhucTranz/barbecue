@@ -27,7 +27,7 @@
                 @Html.DisplayFor(modelItem => item.Account.TenBan)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.total)
+                @string.Format("{0:#,0}", item.total)đ
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.timeBegin)

@@ -21,7 +21,7 @@
                         </div>
                     </div>
                 </td>
-                <td data-th="Price">@i[2] đ</td>
+                <td data-th="Price">@string.Format("{0:#,0}", Int64.Parse(@i[2]))đ</td>
                 <td data-th="Quantity">
                     <input type="number" class="form-control form-control-lg text-center quantity" value="@i[4]" id="@i[6]">
                 </td>
@@ -38,7 +38,7 @@
 </table>
 <div class="float-right text-right">
     <h4>Tổng cộng</h4>
-    <h1>@ViewBag.m đ</h1>
+    <h1>@string.Format("{0:#,0}", Int64.Parse(@ViewBag.m))đ</h1>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>

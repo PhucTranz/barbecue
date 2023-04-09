@@ -43,7 +43,7 @@ namespace cuoiki.Controllers
             var typeFood = tf.FirstOrDefault();
 
             var f = from t in db.Food
-                    where t.idTypeFood == typeFood.idTypeFood
+                    where t.idTypeFood == typeFood.idTypeFood & t.hide == false
                     select t;
 
             ViewBag.tfName = typeFood.name;

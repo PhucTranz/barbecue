@@ -5,20 +5,20 @@
     Layout = "~/Areas/admin/Views/Shared/_MyLayout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Sửa</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm(Html.BeginForm("Edit", "Foods", FormMethod.Post, new { enctype = "multipart/form-data" })))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Food</h4>
+        <h4>Món ăn</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.idFood)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.idTypeFood, "idTypeFood", htmlAttributes: new { @class = "control-label col-md-2" })
+            Loại món ăn
             <div class="col-md-10">
                 @Html.DropDownList("idTypeFood", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.idTypeFood, "", new { @class = "text-danger" })
@@ -26,7 +26,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
+            Tên món ăn
             <div class="col-md-10">
                 @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
@@ -34,7 +34,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.price, htmlAttributes: new { @class = "control-label col-md-2" })
+            Giá
             <div class="col-md-10">
                 @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
@@ -42,15 +42,15 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
+            Mô tả
             <div class="col-md-10">
-                @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.meta, htmlAttributes: new { @class = "control-label col-md-2" })
+            Meta
             <div class="col-md-10">
                 @Html.EditorFor(model => model.meta, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.meta, "", new { @class = "text-danger" })
@@ -58,19 +58,23 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.hide, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.hide)
-                    @Html.ValidationMessageFor(model => model.hide, "", new { @class = "text-danger" })
-                </div>
+            <div class="checkbox">
+                @{
+                    bool hide = (bool)Model.hide;
+                }
+                @Html.CheckBoxFor(model => hide)
+                @Html.ValidationMessageFor(model => model.hide, "", new { @class = "text-danger" })
+                Ẩn
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.img, htmlAttributes: new { @class = "control-label col-md-2" })
+            Hình ảnh
             <div class="col-md-10">
-                @Html.EditorFor(model => model.img, new { htmlAttributes = new { @class = "form-control" } })
+                <br />
+                <img id="preview" src="~/Uploads/images/@Model.TypeFood.meta/@Model.img" width="150" height="100" />
+                <br />
+                @Html.TextBox("fileImage", "", new { type = "file", accept = "image/*" })
                 @Html.ValidationMessageFor(model => model.img, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -84,5 +88,29 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Quay lại", "Index")
 </div>
+<script src="~/Areas/admin/Data/js/meta.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="~/Areas/admin/Data/ckfinder/ckfinder.js"></script>
+<script src="~/Areas/admin/Data/ckeditor/ckeditor.js"></script>
+<script type="text/javascript">
+    var editor = CKEDITOR.replace("description");
+    var editor = CKEDITOR.replace("description", { height: '600px' });
+    customConfig: '/Areas/admin/Content/ckeditor/config.js';
+</script>
+<script>
+    fileImage.onchange = evt => {
+
+        const [file] = fileImage.files
+
+        if (file) {
+
+            preview.src = URL.createObjectURL(file);
+
+            $("#preview").removeClass("hidden");
+
+        }
+
+    }
+</script>

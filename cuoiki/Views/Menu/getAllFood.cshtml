@@ -17,18 +17,23 @@
                     <div class="box" style="height:400px !important">
                         <div>
                             <div class="img-box">
-                                <img src="~/Uploads/images/@ViewBag.meta/@i.img" alt="">
+                                <img src="~/Uploads/images/@ViewBag.meta/@i.img" alt="" style="width:100%; height:100%">
                             </div>
                             <div class="detail-box">
-                                <h5>
-                                    @i.name
-                                </h5>
-                                <p>
-                                    @i.description
-                                </p>
-                                <div class="options">
+                                <div style="height:30% !important; margin-bottom:7px">
+                                    <h5>
+                                        @i.name
+                                    </h5>
+                                </div>
+                                <div style="height:55% !important;">
+                                    <p>
+                                        @Html.Raw(i.description)
+                                    </p>
+                                </div>
+                                
+                                <div class="options" style="">
                                     <h6>
-                                        @i.price
+                                        @string.Format("{0:#,0}", @i.price)đ
                                     </h6>
                                     <a href="" id="@i.idFood" onclick="formSL(id)" data-toggle="modal" data-target="#exampleModal">
                                         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
@@ -150,4 +155,11 @@
     }
 </script>
 <script src="~/Areas/admin/Data/js/meta.js"></script>
+<style>
+    .detail-box {
+        height:183px;
+        width:360px;
+        padding-top: 10px !important;
+    }
+</style>
 

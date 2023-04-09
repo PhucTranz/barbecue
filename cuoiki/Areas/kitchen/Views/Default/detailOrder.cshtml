@@ -31,7 +31,7 @@
                 @Html.DisplayFor(modelItem => item.quanlity)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Food.price)
+                @string.Format("{0:#,0}", item.Food.price)đ
             </td>
         </tr>
     }

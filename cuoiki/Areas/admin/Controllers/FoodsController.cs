@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -63,6 +64,7 @@ namespace cuoiki.Areas.admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Create([Bind(Include = "idFood,idTypeFood,name,price,description,meta,hide,img")] Food food, HttpPostedFileBase fileImage)
         {
             if (ModelState.IsValid)
@@ -75,7 +77,7 @@ namespace cuoiki.Areas.admin.Controllers
                     filename = DateTime.Now.ToString("dd-MM-yy-hh-mm-ss-") + fileImage.FileName;
                     path = Path.Combine(Server.MapPath("~/Uploads/images/"+tf.meta), filename);
                     fileImage.SaveAs(path);
-                    food.img = filename; //Lưu ý
+                    food.img = filename; 
                 }
                 else
                 {
@@ -112,11 +114,26 @@ namespace cuoiki.Areas.admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idFood,idTypeFood,name,price,description,meta,hide,img")] Food food)
+        [ValidateInput(false)]
+        public ActionResult Edit([Bind(Include = "idFood,idTypeFood,name,price,description,meta,hide,img")] Food food, HttpPostedFileBase fileImage)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(food).State = EntityState.Modified;
+                if (fileImage != null)
+                {
+                    TypeFood tf = db.TypeFood.Find(food.idTypeFood);
+                    var path = "";
+                    var filename = "";
+                    filename = DateTime.Now.ToString("dd-MM-yy-hh-mm-ss-") + fileImage.FileName;
+                    path = Path.Combine(Server.MapPath("~/Uploads/images/" + tf.meta), filename);
+                    fileImage.SaveAs(path);
+                    food.img = filename;
+                }
+                else
+                {
+                    food.img = db.Food.Find(food.idFood).img;
+                }
+                db.Food.AddOrUpdate(food);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

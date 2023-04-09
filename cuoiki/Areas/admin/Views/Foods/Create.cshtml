@@ -43,7 +43,7 @@
         <div class="form-group">
             Mô tả
             <div class="col-md-10">
-                @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.description)
                 @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -86,10 +86,17 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Quay lại", "Index")
 </div>
 <script src="~/Areas/admin/Data/js/meta.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="~/Areas/admin/Data/ckfinder/ckfinder.js"></script>
+<script src="~/Areas/admin/Data/ckeditor/ckeditor.js"></script>
+<script type="text/javascript">
+    var editor = CKEDITOR.replace("description");
+    var editor = CKEDITOR.replace("description", { height: '600px' });
+    customConfig: '/Areas/admin/Content/ckeditor/config.js';
+</script>
 <script>
     fileImage.onchange = evt => {
 
