@@ -10,7 +10,6 @@ create table MenuBar(
 )
 
 
-
 create table SlidesShow(
 	idSlidesShow int primary key IDENTITY(1,1),
 	title nvarchar(100),
@@ -31,21 +30,25 @@ create table Banner(
 	datebegin datetime default getdate()
 )
 
-
-
-create table Footer(
-	idFooter int primary key  IDENTITY(1,1),
-	name nvarchar(100),
-	intro nvarchar(1000),
-	address nvarchar(1000),
-	email varchar(100),
-	sdt varchar(100),
-	meta varchar(100),
+create table About(
+	id int primary key  IDENTITY(1,1),
+	title nvarchar(50),
+	content ntext,
+	img nvarchar(MAX),
 	hide bit,
-	[order] int,
 	datebegin datetime default getdate()
 )
 
+create table Footer(
+	idFooter int primary key  IDENTITY(1,1),
+	timeOpen nvarchar(100),
+	intro ntext,
+	address nvarchar(1000),
+	email varchar(100),
+	sdt varchar(100),
+	hide bit,
+	datebegin datetime default getdate()
+)
 
 
 create table TypeFood(
@@ -126,6 +129,14 @@ INSERT INTO MenuBar (name,link,meta,hide,[order])
 VALUES (N'Đặt bàn', 'booktable','dat_ban',0,'4')
 
 
+insert into Footer (timeOpen, intro, address, email, sdt, hide) 
+values ('10.00 AM - 10.00 PM',N'Nhà hàng ngon số 1 Việt Nam', N'29 đường 81, Phường Tân Quy, Quận 7', '52000109@student.tdtu.edu.vn', '0972106231',0)
+
+
+insert into About (title, content, img, hide)
+values ('We Are Barbecue','There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which dont look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isnt anything embarrassing hidden in the middle of text. All','about-img.png',0)
+
+
 insert into Account (TenBan,username,password) values (N'admin','admin','E10ADC3949BA59ABBE56E057F20F883E')
 
 
@@ -153,6 +164,8 @@ delete from DetailBill
 delete from Bill
 delete from DetailCart
 delete from Cart
+
+
 insert into Food (idTypeFood,name,price,description,meta,hide,img) values 
 	(1,N'Cơm Trắng',10000,N'Cơm được nấu từ gạo ST24 không phụ gia','com_trang',0,'2428_Com_trang_1_2.jpg'),
 	(1,N'Cơm trộn bát đá Hàn Quốc sốt Gogi',49000,N'Cơm trộn trong bát đá để giữ được độ nóng mang đến trải nghiệm ấm áp','com_tron_bat_da_han_quoc_sot_gogi',0,'2643_Com_tron_bat_da_han_quoc_sot_gogi_1_2.jpg'),

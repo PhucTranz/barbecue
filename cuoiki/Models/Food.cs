@@ -12,8 +12,8 @@ namespace cuoiki.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Food()
         {
-            DetailBills = new HashSet<DetailBill>();
-            DetailCarts = new HashSet<DetailCart>();
+            DetailBill = new HashSet<DetailBill>();
+            DetailCart = new HashSet<DetailCart>();
         }
 
         [Key]
@@ -39,10 +39,10 @@ namespace cuoiki.Models
         public DateTime? datebegin { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DetailBill> DetailBills { get; set; }
+        public virtual ICollection<DetailBill> DetailBill { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DetailCart> DetailCarts { get; set; }
+        public virtual ICollection<DetailCart> DetailCart { get; set; }
 
         public virtual TypeFood TypeFood { get; set; }
     }

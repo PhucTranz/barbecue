@@ -12,8 +12,8 @@ namespace cuoiki.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Account()
         {
-            Bills = new HashSet<Bill>();
-            Carts = new HashSet<Cart>();
+            Bill = new HashSet<Bill>();
+            Cart = new HashSet<Cart>();
         }
 
         [Key]
@@ -31,9 +31,9 @@ namespace cuoiki.Models
         public DateTime? datebegin { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bill> Bills { get; set; }
+        public virtual ICollection<Bill> Bill { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cart> Carts { get; set; }
+        public virtual ICollection<Cart> Cart { get; set; }
     }
 }

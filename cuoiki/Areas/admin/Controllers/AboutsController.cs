@@ -12,158 +12,137 @@ using cuoiki.Models;
 
 namespace cuoiki.Areas.admin.Controllers
 {
-    public class FoodsController : SecurityController
+    public class AboutsController : SecurityController
     {
         private barbecue db = new barbecue();
 
-        // GET: admin/Foods
-        public ActionResult Index(int? id = null)
+        // GET: admin/Abouts
+        public ActionResult Index()
         {
-            getTypeFood(id);
-            return View();
+            return View(db.About.ToList());
         }
 
-        public void getTypeFood(int? id = null)
-        {
-            ViewBag.typeFood = new SelectList(db.TypeFood.Where(x => x.hide == false), "idTypeFood", "name", id);
-        }
-        // GET: admin/Foods/Details/5
+        // GET: admin/Abouts/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Food food = db.Food.Find(id);
-            if (food == null)
+            About about = db.About.Find(id);
+            if (about == null)
             {
                 return HttpNotFound();
             }
-            return View(food);
+            return View(about);
         }
 
-        // GET: admin/Foods/Create
+        // GET: admin/Abouts/Create
         public ActionResult Create()
         {
-            ViewBag.idTypeFood = new SelectList(db.TypeFood, "idTypeFood", "name");
             return View();
         }
 
-        public ActionResult getFood(int? id)
-        {
-            if(id == null)
-            {
-                var foods = db.Food.Include(f => f.TypeFood);
-                return PartialView(foods.ToList());
-            }
-            var food = db.Food.Where(x => x.idTypeFood == id && x.hide == false);
-            return PartialView(food.ToList());
-        }
-        // POST: admin/Foods/Create
+        // POST: admin/Abouts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Create([Bind(Include = "idFood,idTypeFood,name,price,description,meta,hide,img")] Food food, HttpPostedFileBase fileImage)
+        public ActionResult Create([Bind(Include = "id,title,content,img,hide,datebegin")] About about, HttpPostedFileBase fileImage)
         {
             if (ModelState.IsValid)
             {
                 if (fileImage != null)
                 {
-                    TypeFood tf = db.TypeFood.Find(food.idTypeFood);
                     var path = "";
                     var filename = "";
                     filename = DateTime.Now.ToString("dd-MM-yy-hh-mm-ss-") + fileImage.FileName;
-                    path = Path.Combine(Server.MapPath("~/Uploads/images/"+tf.meta), filename);
+                    path = Path.Combine(Server.MapPath("~/Uploads/images/about"), filename);
                     fileImage.SaveAs(path);
-                    food.img = filename; 
+                    about.img = filename;
                 }
                 else
                 {
-                    food.img = "logo.png";
+                    about.img = "logo.png";
                 }
-                food.datebegin = DateTime.Now;
-                db.Food.Add(food);
+                about.datebegin = DateTime.Now;
+                db.About.Add(about);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.idTypeFood = new SelectList(db.TypeFood, "idTypeFood", "name", food.idTypeFood);
-            return View(food);
+            return View(about);
         }
 
-        // GET: admin/Foods/Edit/5
+        // GET: admin/Abouts/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Food food = db.Food.Find(id);
-            if (food == null)
+            About about = db.About.Find(id);
+            if (about == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.idTypeFood = new SelectList(db.TypeFood, "idTypeFood", "name", food.idTypeFood);
-            return View(food);
+            return View(about);
         }
 
-        // POST: admin/Foods/Edit/5
+        // POST: admin/Abouts/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Edit([Bind(Include = "idFood,idTypeFood,name,price,description,meta,hide,img")] Food food, HttpPostedFileBase fileImage)
+        public ActionResult Edit([Bind(Include = "id,title,content,img,hide,datebegin")] About about, HttpPostedFileBase fileImage)
         {
             if (ModelState.IsValid)
             {
                 if (fileImage != null)
                 {
-                    TypeFood tf = db.TypeFood.Find(food.idTypeFood);
                     var path = "";
                     var filename = "";
                     filename = DateTime.Now.ToString("dd-MM-yy-hh-mm-ss-") + fileImage.FileName;
-                    path = Path.Combine(Server.MapPath("~/Uploads/images/" + tf.meta), filename);
+                    path = Path.Combine(Server.MapPath("~/Uploads/images/about"), filename);
                     fileImage.SaveAs(path);
-                    food.img = filename;
+                    about.img = filename;
                 }
                 else
                 {
-                    food.img = db.Food.Find(food.idFood).img;
+                    about.img = db.About.Find(about.id).img;
                 }
-                food.datebegin= DateTime.Now;
-                db.Food.AddOrUpdate(food);
+                about.datebegin = DateTime.Now;
+                db.About.AddOrUpdate(about);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.idTypeFood = new SelectList(db.TypeFood, "idTypeFood", "name", food.idTypeFood);
-            return View(food);
+            return View(about);
         }
 
-        // GET: admin/Foods/Delete/5
+        // GET: admin/Abouts/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Food food = db.Food.Find(id);
-            if (food == null)
+            About about = db.About.Find(id);
+            if (about == null)
             {
                 return HttpNotFound();
             }
-            return View(food);
+            return View(about);
         }
 
-        // POST: admin/Foods/Delete/5
+        // POST: admin/Abouts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Food food = db.Food.Find(id);
-            db.Food.Remove(food);
+            About about = db.About.Find(id);
+            db.About.Remove(about);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -218,9 +218,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
+    <Compile Include="Areas\admin\Controllers\AboutsController.cs" />
     <Compile Include="Areas\admin\Controllers\AccountsController.cs" />
     <Compile Include="Areas\admin\Controllers\DefaultController.cs" />
     <Compile Include="Areas\admin\Controllers\FoodsController.cs" />
+    <Compile Include="Areas\admin\Controllers\FootersController.cs" />
     <Compile Include="Areas\admin\Controllers\MenuBarsController.cs" />
     <Compile Include="Areas\admin\Controllers\SecurityController.cs" />
     <Compile Include="Areas\admin\Controllers\SlidesShowsController.cs" />
@@ -231,16 +233,15 @@
     <Compile Include="Controllers\BookTableController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\About.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Banner.cs" />
-    <Compile Include="Models\barbecue.cs" />
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\DetailBill.cs" />
@@ -248,7 +249,9 @@
     <Compile Include="Models\Food.cs" />
     <Compile Include="Models\Footer.cs" />
     <Compile Include="Models\MenuBar.cs" />
+    <Compile Include="Models\barbecue.cs" />
     <Compile Include="Models\SlidesShow.cs" />
+    <Compile Include="Models\sysdiagrams.cs" />
     <Compile Include="Models\TypeFood.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1503,13 +1506,23 @@
     <Content Include="Areas\admin\Data\ckeditor\skins\moonocolor\readme.md" />
     <Content Include="Areas\admin\Data\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
     <Content Include="Areas\admin\Data\ckfinder\userfiles\.htaccess" />
+    <Content Include="Areas\admin\Views\Footers\Create.cshtml" />
+    <Content Include="Areas\admin\Views\Footers\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\Footers\Details.cshtml" />
+    <Content Include="Areas\admin\Views\Footers\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\Footers\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Abouts\Create.cshtml" />
+    <Content Include="Areas\admin\Views\Abouts\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\Abouts\Details.cshtml" />
+    <Content Include="Areas\admin\Views\Abouts\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\Abouts\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\js\bootstrap.js" />
     <Content Include="Scripts\js\custom.js" />
     <Content Include="Scripts\js\jquery-3.4.1.min.js" />
-    <Content Include="Uploads\images\about-img-temp-1.png" />
-    <Content Include="Uploads\images\about-img-temp.png" />
-    <Content Include="Uploads\images\about-img.png" />
+    <Content Include="Uploads\images\about\about-img-temp-1.png" />
+    <Content Include="Uploads\images\about\about-img-temp.png" />
+    <Content Include="Uploads\images\about\about-img.png" />
     <Content Include="Uploads\images\barbecued.png" />
     <Content Include="Uploads\images\bg.png" />
     <Content Include="Uploads\images\Canh\1377_Canh_kim_chi.jpg" />
@@ -1709,9 +1722,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_MyLayout.cshtml" />
     <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\Default\getMenu.cshtml" />
@@ -1724,6 +1734,7 @@
     <Content Include="Views\Menu\getAllFood.cshtml" />
     <Content Include="Views\Cart\getCart.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Default\getFooter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\admin\Views\Security\" />

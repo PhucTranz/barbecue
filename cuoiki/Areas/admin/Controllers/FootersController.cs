@@ -10,109 +10,109 @@ using cuoiki.Models;
 
 namespace cuoiki.Areas.admin.Controllers
 {
-    public class MenuBarsController : SecurityController
+    public class FootersController : SecurityController
     {
         private barbecue db = new barbecue();
 
-        // GET: admin/MenuBars
+        // GET: admin/Footers
         public ActionResult Index()
         {
-            return View(db.MenuBar.ToList());
+            return View(db.Footer.ToList());
         }
 
-        // GET: admin/MenuBars/Details/5
+        // GET: admin/Footers/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MenuBar menuBar = db.MenuBar.Find(id);
-            if (menuBar == null)
+            Footer footer = db.Footer.Find(id);
+            if (footer == null)
             {
                 return HttpNotFound();
             }
-            return View(menuBar);
+            return View(footer);
         }
 
-        // GET: admin/MenuBars/Create
+        // GET: admin/Footers/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: admin/MenuBars/Create
+        // POST: admin/Footers/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idMenuBar,name,link,meta,hide,order,datebegin")] MenuBar menuBar)
+        public ActionResult Create([Bind(Include = "idFooter,timeOpen,intro,address,email,sdt,hide,datebegin")] Footer footer)
         {
             if (ModelState.IsValid)
             {
-                menuBar.datebegin= DateTime.Now;
-                db.MenuBar.Add(menuBar);
+                footer.datebegin = DateTime.Now;
+                db.Footer.Add(footer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(menuBar);
+            return View(footer);
         }
 
-        // GET: admin/MenuBars/Edit/5
+        // GET: admin/Footers/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MenuBar menuBar = db.MenuBar.Find(id);
-            if (menuBar == null)
+            Footer footer = db.Footer.Find(id);
+            if (footer == null)
             {
                 return HttpNotFound();
             }
-            return View(menuBar);
+            return View(footer);
         }
 
-        // POST: admin/MenuBars/Edit/5
+        // POST: admin/Footers/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idMenuBar,name,link,meta,hide,order,datebegin")] MenuBar menuBar)
+        public ActionResult Edit([Bind(Include = "idFooter,timeOpen,intro,address,email,sdt,hide,datebegin")] Footer footer)
         {
             if (ModelState.IsValid)
             {
-                menuBar.datebegin = DateTime.Now;
-                db.Entry(menuBar).State = EntityState.Modified;
+                footer.datebegin = DateTime.Now;
+                db.Entry(footer).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(menuBar);
+            return View(footer);
         }
 
-        // GET: admin/MenuBars/Delete/5
+        // GET: admin/Footers/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MenuBar menuBar = db.MenuBar.Find(id);
-            if (menuBar == null)
+            Footer footer = db.Footer.Find(id);
+            if (footer == null)
             {
                 return HttpNotFound();
             }
-            return View(menuBar);
+            return View(footer);
         }
 
-        // POST: admin/MenuBars/Delete/5
+        // POST: admin/Footers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            MenuBar menuBar = db.MenuBar.Find(id);
-            db.MenuBar.Remove(menuBar);
+            Footer footer = db.Footer.Find(id);
+            db.Footer.Remove(footer);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

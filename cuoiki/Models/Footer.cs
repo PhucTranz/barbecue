@@ -13,9 +13,9 @@ namespace cuoiki.Models
         public int idFooter { get; set; }
 
         [StringLength(100)]
-        public string name { get; set; }
+        public string timeOpen { get; set; }
 
-        [StringLength(1000)]
+        [Column(TypeName = "ntext")]
         public string intro { get; set; }
 
         [StringLength(1000)]
@@ -27,12 +27,7 @@ namespace cuoiki.Models
         [StringLength(100)]
         public string sdt { get; set; }
 
-        [StringLength(100)]
-        public string meta { get; set; }
-
         public bool? hide { get; set; }
-
-        public int? order { get; set; }
 
         public DateTime? datebegin { get; set; }
     }

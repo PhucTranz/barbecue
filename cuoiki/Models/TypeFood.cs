@@ -12,7 +12,7 @@ namespace cuoiki.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TypeFood()
         {
-            Foods = new HashSet<Food>();
+            Food = new HashSet<Food>();
         }
 
         [Key]
@@ -28,6 +28,6 @@ namespace cuoiki.Models
         public DateTime? datebegin { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Food> Foods { get; set; }
+        public virtual ICollection<Food> Food { get; set; }
     }
 }

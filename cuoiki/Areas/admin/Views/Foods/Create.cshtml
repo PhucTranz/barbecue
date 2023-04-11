@@ -57,12 +57,13 @@
         </div>
 
         <div class="form-group">
-            Ẩn
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.hide)
-                    @Html.ValidationMessageFor(model => model.hide, "", new { @class = "text-danger" })
-                </div>
+            <div class="checkbox">
+                @{
+                    bool hide = false;
+                }
+                @Html.CheckBoxFor(model => hide)
+                @Html.ValidationMessageFor(model => model.hide, "", new { @class = "text-danger" })
+                Ẩn
             </div>
         </div>
 

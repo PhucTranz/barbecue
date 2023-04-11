@@ -13,8 +13,11 @@ namespace cuoiki.Controllers
         barbecue db = new barbecue();
         public ActionResult Index()
         {
+            var v = from t in db.About
+                    where t.hide == false
+                    select t;
             ViewBag.page = "trang_chu";
-            return View();
+            return View(v.FirstOrDefault());
         }
 
         public ActionResult getMenu()
@@ -34,6 +37,14 @@ namespace cuoiki.Controllers
                     select t;
             ViewBag.sl = v.ToList().Count();
             return PartialView(v.ToList());
+        }
+
+        public ActionResult getFooter()
+        {
+            var footer = from t in db.Footer
+                         where t.hide == false
+                         select t;
+            return PartialView(footer.FirstOrDefault());
         }
     }
 }

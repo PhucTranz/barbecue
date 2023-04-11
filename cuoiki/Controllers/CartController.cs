@@ -43,7 +43,10 @@ namespace cuoiki.Controllers
                 array[6] = Convert.ToString(i.idfood);
                 list.Add(array);
             }
-            ViewBag.m = p;
+            if (p.Equals(""))
+                ViewBag.m = "0";
+            else
+                ViewBag.m = p;
             ViewBag.list = list;
             return PartialView();
         }

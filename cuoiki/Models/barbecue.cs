@@ -12,6 +12,7 @@ namespace cuoiki.Models
         {
         }
 
+        public virtual DbSet<About> About { get; set; }
         public virtual DbSet<Account> Account { get; set; }
         public virtual DbSet<Banner> Banner { get; set; }
         public virtual DbSet<Bill> Bill { get; set; }
@@ -22,6 +23,7 @@ namespace cuoiki.Models
         public virtual DbSet<Footer> Footer { get; set; }
         public virtual DbSet<MenuBar> MenuBar { get; set; }
         public virtual DbSet<SlidesShow> SlidesShow { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TypeFood> TypeFood { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -31,12 +33,12 @@ namespace cuoiki.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Bill>()
-                .HasMany(e => e.DetailBills)
+                .HasMany(e => e.DetailBill)
                 .WithRequired(e => e.Bill)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Cart>()
-                .HasMany(e => e.DetailCarts)
+                .HasMany(e => e.DetailCart)
                 .WithRequired(e => e.Cart)
                 .WillCascadeOnDelete(false);
 
@@ -45,12 +47,12 @@ namespace cuoiki.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Food>()
-                .HasMany(e => e.DetailBills)
+                .HasMany(e => e.DetailBill)
                 .WithRequired(e => e.Food)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Food>()
-                .HasMany(e => e.DetailCarts)
+                .HasMany(e => e.DetailCart)
                 .WithRequired(e => e.Food)
                 .WillCascadeOnDelete(false);
 
@@ -60,10 +62,6 @@ namespace cuoiki.Models
 
             modelBuilder.Entity<Footer>()
                 .Property(e => e.sdt)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Footer>()
-                .Property(e => e.meta)
                 .IsUnicode(false);
 
             modelBuilder.Entity<MenuBar>()
