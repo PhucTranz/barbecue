@@ -1,0 +1,86 @@
+﻿@model IEnumerable<cuoiki.Models.Bill>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/_MyLayout.cshtml";
+}
+
+@section _Header{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="~/Areas/admin/Data/css/btn.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="~/Areas/admin/Data/js/table.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+    <style>
+        th {
+            color: black !important;
+            font-weight: bold !important;
+        }
+    </style>
+}
+<div id="a">
+    <h2>Hóa đơn</h2>
+</div>
+<hr />
+<table id="example" class="table table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                STT
+            </th>
+            <th>
+                Tên bàn
+            </th>
+            <th>
+                Bắt đầu
+            </th>
+            <th>
+                Kết thúc
+            </th>
+            <th>
+                Tổng tiền
+            </th>
+            <th> Thao tác </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{var num = 1;}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.Raw(num++)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Account.TenBan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.timeBegin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.timeFinish)
+                </td>
+                <td>
+                    @string.Format("{0:#,0}", item.total)đ
+                </td>
+                <td>
+                    <a href="@Url.Action("Details", "Bills", new { id = item.idBill })">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text" viewBox="0 0 16 16">
+                            <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z" />
+                            <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5L9.5 0zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z" />
+                        </svg>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+   
+
+</table>

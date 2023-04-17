@@ -83,6 +83,7 @@ namespace cuoiki.Areas.admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                slidesShow.datebegin = DateTime.Now;
                 db.Entry(slidesShow).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

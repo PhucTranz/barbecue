@@ -5,14 +5,14 @@
     Layout = "~/Areas/admin/Views/Shared/_MyLayout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Sửa</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Account</h4>
+        <h4>Tài khoản</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.idAcc)
@@ -52,3 +52,6 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+<script>
+    document.querySelector("#password").value = "";
+</script>

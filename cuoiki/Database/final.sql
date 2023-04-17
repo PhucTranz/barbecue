@@ -139,6 +139,7 @@ values ('We Are Barbecue','There are many variations of passages of Lorem Ipsum 
 
 insert into Account (TenBan,username,password) values (N'admin','admin','E10ADC3949BA59ABBE56E057F20F883E')
 
+select * from About
 
 
 INSERT INTO SlidesShow (title,description,link,meta,hide,[order])

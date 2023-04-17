@@ -1,0 +1,67 @@
+﻿@model  IEnumerable<cuoiki.Models.DetailBill>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/admin/Views/Shared/_MyLayout.cshtml";
+}
+
+<div id="print">
+    <h2>Chi tiết hóa đơn</h2>
+    <hr />
+    <dl class="dl-horizontal">
+        <dd>
+            <strong>Tên bàn: </strong> @Model.First().Bill.Account.TenBan
+        </dd>
+
+        <table class="table" style="width:500px">
+            <tr>
+                <th>
+                    Món ăn
+                </th>
+                <th>
+                    Giá
+                </th>
+                <th>
+                    Số lượng
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Food.name
+                    </td>
+                    <td>
+                        @string.Format("{0:#,0}", item.Food.price)đ
+                    </td>
+                    <td>
+                        @item.quanlity
+                    </td>
+                </tr>
+            }
+            <tr>
+                <th>
+                    Tổng tiền:
+                </th>
+                <th>
+                    @string.Format("{0:#,0}", Model.First().Bill.total)đ
+                </th>
+            </tr>
+        </table>
+        <dd>
+            <strong>Ngày tạo: </strong> @Model.First().Bill.timeBegin
+        </dd>
+    </dl>
+</div>
+
+<input class="btn btn-primary" type="button" onclick="printDiv('print')" value="In hóa đơn!" />
+<script>
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+    }
+</script>

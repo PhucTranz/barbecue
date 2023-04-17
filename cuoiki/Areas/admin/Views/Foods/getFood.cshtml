@@ -49,16 +49,16 @@
                     <img src="~/Uploads/images/@item.TypeFood.meta/@item.img" class="img-fluid d-none d-md-block rounded mb-2 shadow ">
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.price)
+                    @string.Format("{0:#,0}", item.price)đ
                 </td>
                 <td>
                     @if (item.description.Length <= 33)
                     {
-                        @Html.DisplayFor(modelItem => item.description)
+                        @Html.Raw(item.description)
                     }
                     else
                     {
-                        @(item.description.ToString().Substring(0, 30) + "...")
+                        @Html.Raw(item.description.ToString().Substring(0, 30) + "...")
                     }
                 </td>
 

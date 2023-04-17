@@ -220,6 +220,7 @@
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
     <Compile Include="Areas\admin\Controllers\AboutsController.cs" />
     <Compile Include="Areas\admin\Controllers\AccountsController.cs" />
+    <Compile Include="Areas\admin\Controllers\BillsController.cs" />
     <Compile Include="Areas\admin\Controllers\DefaultController.cs" />
     <Compile Include="Areas\admin\Controllers\FoodsController.cs" />
     <Compile Include="Areas\admin\Controllers\FootersController.cs" />
@@ -1516,6 +1517,8 @@
     <Content Include="Areas\admin\Views\Abouts\Details.cshtml" />
     <Content Include="Areas\admin\Views\Abouts\Edit.cshtml" />
     <Content Include="Areas\admin\Views\Abouts\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Bills\Details.cshtml" />
+    <Content Include="Areas\admin\Views\Bills\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\js\bootstrap.js" />
     <Content Include="Scripts\js\custom.js" />
@@ -1737,10 +1740,7 @@
     <Content Include="Views\Default\getFooter.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\admin\Views\Security\" />
-    <Folder Include="Areas\kitchen\Views\Security\" />
     <Folder Include="Uploads\files\" />
-    <Folder Include="Views\Security\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

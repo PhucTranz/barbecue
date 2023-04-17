@@ -37,6 +37,7 @@ namespace cuoiki.Areas.kitchen.Controllers
             {
                 Bill b = db.Bill.Find(id);
                 b.status = true;
+                b.timeFinish = DateTime.Now;
                 db.Bill.AddOrUpdate(b);
                 db.SaveChanges();
                 return Json(new { code = 1}, JsonRequestBehavior.AllowGet);

@@ -5,20 +5,20 @@
     Layout = "~/Areas/admin/Views/Shared/_MyLayout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Sửa</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm(Html.BeginForm("Edit", "Abouts", FormMethod.Post, new { enctype = "multipart/form-data" })))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>About</h4>
+        <h4>Trang chủ</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.title, htmlAttributes: new { @class = "control-label col-md-2" })
+            Tiêu đề
             <div class="col-md-10">
                 @Html.EditorFor(model => model.title, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.title, "", new { @class = "text-danger" })
@@ -26,36 +26,32 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.content, htmlAttributes: new { @class = "control-label col-md-2" })
+            Nội dung
             <div class="col-md-10">
-                @Html.EditorFor(model => model.content, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.content, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.content, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.img, htmlAttributes: new { @class = "control-label col-md-2" })
+            Hình ảnh
             <div class="col-md-10">
-                @Html.EditorFor(model => model.img, new { htmlAttributes = new { @class = "form-control" } })
+                <br />
+                <img id="preview" src="~/Uploads/images/about/@Model.img" width="150" height="100" />
+                <br />
+                @Html.TextBox("fileImage", "", new { type = "file", accept = "image/*" })
                 @Html.ValidationMessageFor(model => model.img, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.hide, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.hide)
-                    @Html.ValidationMessageFor(model => model.hide, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.datebegin, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.datebegin, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.datebegin, "", new { @class = "text-danger" })
+            <div class="checkbox">
+                @{
+                    bool hide = (bool)Model.hide;
+                }
+                @Html.CheckBoxFor(model => hide)
+                @Html.ValidationMessageFor(model => model.hide, "", new { @class = "text-danger" })
+                Ẩn
             </div>
         </div>
 
@@ -68,5 +64,28 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Quay lại", "Index")
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="~/Areas/admin/Data/ckfinder/ckfinder.js"></script>
+<script src="~/Areas/admin/Data/ckeditor/ckeditor.js"></script>
+<script type="text/javascript">
+    var editor = CKEDITOR.replace("content");
+    var editor = CKEDITOR.replace("content", { height: '600px' });
+    customConfig: '/Areas/admin/Content/ckeditor/config.js';
+</script>
+<script>
+    fileImage.onchange = evt => {
+
+        const [file] = fileImage.files
+
+        if (file) {
+
+            preview.src = URL.createObjectURL(file);
+
+            $("#preview").removeClass("hidden");
+
+        }
+
+    }
+</script>

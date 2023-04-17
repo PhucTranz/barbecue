@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
-    <title>Tiny Dashboard - A Bootstrap Dashboard Template</title>
+    <title>Barbecue admin page</title>
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="~/Areas/admin/Data/css/simplebar.css">
     <!-- Fonts CSS -->
@@ -129,74 +129,16 @@
                     <span>Đơn hàng</span>
                 </p>
                 <ul class="navbar-nav flex-fill w-100 mb-2">
-                    <li class="nav-item dropdown">
-                        <a href="#pages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                            <i class="fe fe-file fe-16"></i>
-                            <span class="ml-3 item-text">Pages</span>
+                    <li class="nav-item w-100">
+                        <a class="nav-link" href="@Url.Action("Index","Bills")">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-receipt" viewBox="0 0 16 16">
+                                <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z" />
+                                <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
+                            </svg>
+                            <span class="ml-3 item-text">Đơn hàng</span>
                         </a>
-                        <ul class="collapse list-unstyled pl-4 w-100 w-100" id="pages">
-                            <li class="nav-item">
-                                <a class="nav-link pl-3" href="./page-orders.html">
-                                    <span class="ml-1 item-text">Orders</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link pl-3" href="./page-timeline.html">
-                                    <span class="ml-1 item-text">Timeline</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link pl-3" href="./page-invoice.html">
-                                    <span class="ml-1 item-text">Invoice</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link pl-3" href="./page-404.html">
-                                    <span class="ml-1 item-text">Page 404</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link pl-3" href="./page-500.html">
-                                    <span class="ml-1 item-text">Page 500</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link pl-3" href="./page-blank.html">
-                                    <span class="ml-1 item-text">Blank</span>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a href="#auth" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                            <i class="fe fe-shield fe-16"></i>
-                            <span class="ml-3 item-text">Authentication</span>
-                        </a>
-                        <ul class="collapse list-unstyled pl-4 w-100" id="auth">
-                            <a class="nav-link pl-3" href="./auth-login.html"><span class="ml-1">Login 1</span></a>
-                            <a class="nav-link pl-3" href="./auth-login-half.html"><span class="ml-1">Login 2</span></a>
-                            <a class="nav-link pl-3" href="./auth-register.html"><span class="ml-1">Register</span></a>
-                            <a class="nav-link pl-3" href="./auth-resetpw.html"><span class="ml-1">Reset Password</span></a>
-                            <a class="nav-link pl-3" href="./auth-confirm.html"><span class="ml-1">Confirm Password</span></a>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a href="#layouts" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                            <i class="fe fe-layout fe-16"></i>
-                            <span class="ml-3 item-text">Layout</span>
-                        </a>
-                        <ul class="collapse list-unstyled pl-4 w-100" id="layouts">
-                            <li class="nav-item">
-                                <a class="nav-link pl-3" href="./index.html"><span class="ml-1 item-text">Default</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link pl-3" href="./index-horizontal.html"><span class="ml-1 item-text">Top Navigation</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link pl-3" href="./index-boxed.html"><span class="ml-1 item-text">Boxed</span></a>
-                            </li>
-                        </ul>
-                    </li>
+                </ul>
             </nav>
         </aside>
         <main role="main" class="main-content">

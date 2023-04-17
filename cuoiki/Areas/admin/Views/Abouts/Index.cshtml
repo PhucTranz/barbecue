@@ -79,11 +79,11 @@
                 <td>
                     @if (item.content.Length <= 200)
                     {
-                        @Html.DisplayFor(modelItem => item.content)
+                        @Html.Raw(item.content)
                     }
                     else
                     {
-                        @(item.content.ToString().Substring(0, 200) + "...")
+                        @Html.Raw((item.content.ToString().Substring(0, 200) + "..."))
                     }
                 </td>
                 <td>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
@@ -98,7 +99,8 @@ namespace cuoiki.Areas.admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(account).State = EntityState.Modified;
+                account.password = GetMD5(account.password);
+                db.Account.AddOrUpdate(account);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

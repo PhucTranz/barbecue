@@ -4,7 +4,12 @@
     ViewBag.Title = "Details";
     Layout = "~/Areas/admin/Views/Shared/_MyLayout.cshtml";
 }
-
+<style>
+    img {
+        width: 150px;
+        height: 150px;
+    }
+</style>
 <h2>Details</h2>
 
 <div>
@@ -12,7 +17,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.title)
+            Tiêu đề
         </dt>
 
         <dd>
@@ -20,23 +25,23 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.content)
+            Nội dung
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.content)
+            @Html.Raw(Model.content)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.img)
+            Hình ảnh
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.img)
+            <img src="~/Uploads/images/about/@Model.img" class="img-fluid d-none d-md-block rounded mb-2 shadow ">
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.hide)
+            Ẩn
         </dt>
 
         <dd>
@@ -44,7 +49,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.datebegin)
+            Ngày tạo
         </dt>
 
         <dd>
